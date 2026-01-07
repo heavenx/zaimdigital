@@ -609,7 +609,7 @@ export default function CreationSiteWeb() {
             <Button
               size="lg"
               variant="outline"
-              className="gap-2 px-8 py-6 border-white/30 text-white hover:bg-white/10"
+              className="gap-2 px-8 py-6 border-white/30 text-white hover:text-white hover:bg-white/20"
               asChild
             >
               <Link href="tel:+212600000000">
