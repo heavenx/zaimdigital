@@ -220,7 +220,7 @@ export default async function Home() {
                 </p>
                 <Button
                   variant="ghost"
-                  className="group/btn w-full gap-2 text-primary hover:bg-primary/5 font-semibold"
+                  className="group/btn w-full gap-2 text-primary hover:text-primary hover:bg-primary/10 font-semibold"
                   asChild
                 >
                   <Link href="/nos_produits/labcorp-laboratoire-btp/">
@@ -252,7 +252,7 @@ export default async function Home() {
                 </p>
                 <Button
                   variant="ghost"
-                  className="group/btn w-full gap-2 text-primary hover:bg-primary/5 font-semibold"
+                  className="group/btn w-full gap-2 text-primary hover:text-primary hover:bg-primary/10 font-semibold"
                   asChild
                 >
                   <Link href="/nos_produits/smoothfix-gmao/">
@@ -284,7 +284,7 @@ export default async function Home() {
                 </p>
                 <Button
                   variant="ghost"
-                  className="group/btn w-full gap-2 text-primary hover:bg-primary/5 font-semibold"
+                  className="group/btn w-full gap-2 text-primary hover:text-primary hover:bg-primary/10 font-semibold"
                   asChild
                 >
                   <Link href="/agronet-gestion-ferme/">

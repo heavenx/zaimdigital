@@ -245,7 +245,7 @@ export default function DeveloppementSpecifique() {
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="gap-2 px-8 py-6 border-2 border-white bg-white text-slate-900 hover:bg-white/90" asChild>
+            <Button size="lg" variant="outline" className="gap-2 px-8 py-6 border-2 border-white bg-white text-slate-900 hover:bg-slate-100 hover:text-slate-900" asChild>
               <Link href="tel:+212624067491">
                 Appeler maintenant
               </Link>
