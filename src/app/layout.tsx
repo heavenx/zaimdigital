@@ -17,6 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ZAIM DIGITAL - Innovation. Performance. Simplicité",
   description: "ZAIM DIGITAL propose des solutions logicielles innovantes pour optimiser la gestion de vos activités professionnelles.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
