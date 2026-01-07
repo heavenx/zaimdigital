@@ -38,7 +38,7 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Logique d'envoi du formulaire à implémenter
+    // Form submission logic to be implemented
     console.log("Form submitted:", formData);
   };
 
@@ -61,20 +61,20 @@ export default function Home() {
               className="border-primary/20 bg-primary/5 text-primary px-6 py-2 text-sm font-medium backdrop-blur-sm hover:bg-primary/10 transition-all duration-300 animate-slide-down"
             >
               <Sparkles className="h-3.5 w-3.5 mr-2" />
-              Innovation. Performance. Simplicité.
+              Innovation. Performance. Simplicity.
             </Badge>
 
             {/* Hero Title with Gradient */}
             <h1 className="max-w-5xl text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl animate-slide-up">
-              Transformez votre vision{" "}
+              Transform your vision{" "}
               <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent animate-gradient">
-                en réalité digitale
+                into digital reality
               </span>
             </h1>
 
             {/* Hero Description */}
             <p className="max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-xl lg:text-2xl font-light animate-slide-up-delay">
-              Zaim Digital développe depuis 2021 des logiciels de gestion performants alliant technologie web et intelligence artificielle pour répondre aux besoins spécifiques de votre activité.
+              Since 2021, Zaim Digital develops powerful management software combining web technology and artificial intelligence to meet your business needs.
             </p>
 
             {/* CTA Buttons */}
@@ -84,19 +84,19 @@ export default function Home() {
                 className="group gap-2 px-8 py-6 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
                 asChild
               >
-                <Link href="#produits">
-                  Découvrir nos solutions
+                <Link href="#products">
+                  Discover our solutions
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button
                 size="lg"
-                variant="secondary"
-                className="gap-2 px-8 py-6 text-base bg-slate-900 text-white hover:bg-slate-800 transition-all duration-300"
+                variant="outline"
+                className="gap-2 px-8 py-6 text-base border-2 hover:bg-slate-50 transition-all duration-300"
                 asChild
               >
                 <Link href="#contact">
-                  Nous contacter
+                  Contact us
                   <MessageSquare className="h-5 w-5" />
                 </Link>
               </Button>
@@ -106,15 +106,15 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-8 pt-12 animate-fade-in-slow">
               <div className="text-center">
                 <div className="text-3xl font-bold text-slate-900">2021</div>
-                <div className="text-sm text-slate-600">Année de création</div>
+                <div className="text-sm text-slate-600">Year founded</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-slate-900">50+</div>
-                <div className="text-sm text-slate-600">Projets réalisés</div>
+                <div className="text-sm text-slate-600">Completed projects</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-slate-900">100%</div>
-                <div className="text-sm text-slate-600">Satisfaction client</div>
+                <div className="text-sm text-slate-600">Client satisfaction</div>
               </div>
             </div>
           </div>
@@ -128,22 +128,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Transformation Numérique Section */}
+      {/* Digital Transformation Section */}
       <section className="relative px-6 py-32 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8 animate-fade-in-left">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-sm font-medium">
                 <Building2 className="h-4 w-4" />
-                Notre Mission
+                Our Mission
               </div>
               <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Nous voulons faire partie de la{" "}
-                <span className="text-primary">transformation numérique</span>{" "}
-                de votre entreprise
+                We want to be part of your company's{" "}
+                <span className="text-primary">digital transformation</span>
               </h2>
               <p className="text-lg leading-relaxed text-slate-600">
-                Notre expertise en développement informatique nous permet de disposer d'une vaste bibliothèque de développements et de créations d'applications. Chez ZAIM DIGITAL, nous aidons les entreprises à se démarquer en ligne en développant des stratégies sur mesure pour augmenter leur visibilité, améliorer leur performance et atteindre leurs objectifs commerciaux.
+                Our expertise in software development allows us to have a vast library of developments and application creations. At ZAIM DIGITAL, we help businesses stand out online by developing custom strategies to increase their visibility, improve their performance and achieve their business goals.
               </p>
             </div>
 
@@ -154,9 +153,9 @@ export default function Home() {
                   <div className="h-12 w-12 rounded-xl bg-blue-100 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
                     <CheckCircle2 className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900">Rigueur</h3>
+                  <h3 className="text-xl font-semibold text-slate-900">Rigor</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
-                    Méthodologie précise et attention aux détails
+                    Precise methodology and attention to detail
                   </p>
                 </CardContent>
               </Card>
@@ -168,7 +167,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-xl font-semibold text-slate-900">Communication</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
-                    Dialogue constant et transparent
+                    Constant and transparent dialogue
                   </p>
                 </CardContent>
               </Card>
@@ -178,9 +177,9 @@ export default function Home() {
                   <div className="h-12 w-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform duration-300">
                     <Lightbulb className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900">Créativité</h3>
+                  <h3 className="text-xl font-semibold text-slate-900">Creativity</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
-                    Solutions innovantes sur mesure
+                    Innovative custom solutions
                   </p>
                 </CardContent>
               </Card>
@@ -190,9 +189,9 @@ export default function Home() {
                   <div className="h-12 w-12 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform duration-300">
                     <Award className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900">Expertise Technique</h3>
+                  <h3 className="text-xl font-semibold text-slate-900">Technical Expertise</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
-                    Maîtrise des technologies de pointe
+                    Mastery of cutting-edge technologies
                   </p>
                 </CardContent>
               </Card>
@@ -201,19 +200,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Nos Produits Section */}
-      <section id="produits" className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+      {/* Our Products Section */}
+      <section id="products" className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16 space-y-4 animate-fade-in">
             <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
-              Nos Produits
+              Our Products
             </Badge>
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Solutions innovantes pour votre{" "}
-              <span className="text-primary">secteur d'activité</span>
+              Innovative solutions for your{" "}
+              <span className="text-primary">business sector</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              Des logiciels métiers conçus pour digitaliser et optimiser vos processus
+              Industry-specific software designed to digitize and optimize your processes
             </p>
           </div>
 
@@ -232,18 +231,18 @@ export default function Home() {
               <CardContent className="p-8 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-2xl font-bold text-slate-900">LABCORP BTP</h3>
-                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">ERP BTP</Badge>
+                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">Construction ERP</Badge>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Un ERP complet conçu pour digitaliser les laboratoires d'analyse BTP et les centrales à béton. Il automatise la gestion des essais, des rapports et du suivi qualité pour offrir une traçabilité optimale et un gain de temps considérable.
+                  A complete ERP designed to digitize construction analysis laboratories and concrete plants. It automates test management, reports and quality tracking for optimal traceability and significant time savings.
                 </p>
                 <Button
                   variant="ghost"
                   className="group/btn w-full gap-2 text-primary hover:bg-primary/5 font-semibold"
                   asChild
                 >
-                  <Link href="/nos_produits/labcorp-laboratoire-btp/">
-                    En savoir plus
+                  <Link href="/en/construction-laboratory-labcorp">
+                    Learn more
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-2" />
                   </Link>
                 </Button>
@@ -255,7 +254,7 @@ export default function Home() {
               <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
                 <Image
                   src="/images/smoothfix-gmao.jpg"
-                  alt="SMOOTHFIX GMAO"
+                  alt="SMOOTHFIX CMMS"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -263,19 +262,19 @@ export default function Home() {
               </div>
               <CardContent className="p-8 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-slate-900">SMOOTHFIX GMAO</h3>
-                  <Badge className="bg-green-100 text-green-700 hover:bg-green-200">GMAO</Badge>
+                  <h3 className="text-2xl font-bold text-slate-900">SMOOTHFIX CMMS</h3>
+                  <Badge className="bg-green-100 text-green-700 hover:bg-green-200">CMMS</Badge>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Une solution GMAO simple et rapide à déployer, pensée pour la maintenance préventive et curative. Elle permet un suivi précis des interventions, des équipements et des coûts afin d'améliorer la productivité et la fiabilité des opérations.
+                  A simple and quick-to-deploy CMMS solution, designed for preventive and corrective maintenance. It allows precise tracking of interventions, equipment and costs to improve productivity and operational reliability.
                 </p>
                 <Button
                   variant="ghost"
                   className="group/btn w-full gap-2 text-primary hover:bg-primary/5 font-semibold"
                   asChild
                 >
-                  <Link href="/nos_produits/smoothfix-gmao/">
-                    En savoir plus
+                  <Link href="/en/gmao-cmms">
+                    Learn more
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-2" />
                   </Link>
                 </Button>
@@ -299,22 +298,22 @@ export default function Home() {
                   <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-200">AgriTech</Badge>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Un ERP de gestion agricole intelligent dédié à l'organisation des entrées, sorties et à la gestion d'élevage. Spécialement adapté aux fermes modernes, il centralise les données pour un pilotage efficace et durable des activités agricoles.
+                  An intelligent agricultural management ERP dedicated to organizing inputs, outputs and livestock management. Specially adapted to modern farms, it centralizes data for efficient and sustainable farm operations management.
                 </p>
                 <Button
                   variant="ghost"
                   className="group/btn w-full gap-2 text-primary hover:bg-primary/5 font-semibold"
                   asChild
                 >
-                  <Link href="/agronet-gestion-ferme/">
-                    En savoir plus
+                  <Link href="/en/agronet-farm-management">
+                    Learn more
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-2" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
 
-            {/* GESTION MARITIME */}
+            {/* MARITIME MANAGEMENT */}
             <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-primary via-blue-600 to-indigo-600 text-white hover:-translate-y-2">
               <div className="relative h-72 w-full overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:14px_24px]" />
@@ -322,23 +321,23 @@ export default function Home() {
                   <div className="mx-auto h-24 w-24 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     <Code className="h-12 w-12 text-white" />
                   </div>
-                  <h3 className="text-3xl font-bold">GESTION MARITIME</h3>
+                  <h3 className="text-3xl font-bold">MARITIME MANAGEMENT</h3>
                 </div>
               </div>
               <CardContent className="p-8 space-y-4">
                 <div className="flex items-center justify-between">
-                  <Badge className="bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm">ERP Maritime</Badge>
+                  <Badge className="bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm">Maritime ERP</Badge>
                 </div>
                 <p className="text-white/90 leading-relaxed">
-                  Un ERP complet dédié aux transitaires et acteurs du secteur maritime. Connecté au système BADR, il optimise la gestion des dossiers, des déclarations et des opérations logistiques avec une précision optimale.
+                  A complete ERP dedicated to freight forwarders and maritime sector players. Connected to the BADR system, it optimizes file management, declarations and logistics operations with optimal precision.
                 </p>
                 <Button
                   variant="secondary"
                   className="group/btn w-full gap-2 font-semibold"
                   asChild
                 >
-                  <Link href="/nos_produits/developpement-specifique/">
-                    En savoir plus
+                  <Link href="/en/custom-development">
+                    Learn more
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-2" />
                   </Link>
                 </Button>
@@ -348,7 +347,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Nos Services Section */}
+      {/* Our Services Section */}
       <section className="relative px-6 py-32 lg:px-8 bg-white overflow-hidden">
         {/* Background Decoration */}
         <div className="absolute top-0 right-0 -z-10 h-96 w-96 rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-3xl" />
@@ -356,14 +355,14 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16 space-y-4 animate-fade-in">
             <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
-              Nos Services
+              Our Services
             </Badge>
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Un accompagnement{" "}
-              <span className="text-primary">complet et personnalisé</span>
+              Complete and{" "}
+              <span className="text-primary">personalized support</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              De la conception à la mise en production, nous vous accompagnons à chaque étape
+              From design to production, we support you every step of the way
             </p>
           </div>
 
@@ -377,15 +376,15 @@ export default function Home() {
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-xl font-bold text-slate-900">
-                    Développement sur mesure de logiciels
+                    Custom Software Development
                   </h3>
                   <p className="text-slate-600 leading-relaxed">
-                    Nous concevons des solutions logicielles personnalisées adaptées à vos besoins métiers. De la conception à la mise en production, chaque application est pensée pour optimiser vos processus et accompagner votre croissance.
+                    We design custom software solutions adapted to your business needs. From design to production, each application is designed to optimize your processes and support your growth.
                   </p>
                 </div>
                 <div className="pt-4">
                   <div className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
-                    Découvrir
+                    Discover
                     <ArrowRight className="h-4 w-4" />
                   </div>
                 </div>
@@ -401,15 +400,15 @@ export default function Home() {
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-xl font-bold text-slate-900">
-                    Déploiement de CRM (Odoo, Dolibarr)
+                    CRM Deployment (Odoo, Dolibarr)
                   </h3>
                   <p className="text-slate-600 leading-relaxed">
-                    Nous vous aidons à intégrer et personnaliser des CRM performants tels qu'Odoo et Dolibarr. Nos experts assurent un déploiement rapide et une configuration sur mesure pour améliorer votre gestion client et commerciale.
+                    We help you integrate and customize high-performance CRMs such as Odoo and Dolibarr. Our experts ensure rapid deployment and custom configuration to improve your customer and sales management.
                   </p>
                 </div>
                 <div className="pt-4">
                   <div className="inline-flex items-center gap-2 text-green-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                    Découvrir
+                    Discover
                     <ArrowRight className="h-4 w-4" />
                   </div>
                 </div>
@@ -425,15 +424,15 @@ export default function Home() {
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-xl font-bold text-slate-900">
-                    Automatisation des processus basée sur l'IA (Make, n8n)
+                    AI-Based Process Automation (Make, n8n)
                   </h3>
                   <p className="text-slate-600 leading-relaxed">
-                    Nous exploitons le potentiel de l'intelligence artificielle et des outils d'automatisation comme Make et n8n. Résultat : des workflows intelligents qui réduisent les tâches répétitives, augmentent la productivité et connectent vos outils entre eux.
+                    We harness the potential of artificial intelligence and automation tools like Make and n8n. Result: intelligent workflows that reduce repetitive tasks, increase productivity and connect your tools together.
                   </p>
                 </div>
                 <div className="pt-4">
                   <div className="inline-flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                    Découvrir
+                    Discover
                     <ArrowRight className="h-4 w-4" />
                   </div>
                 </div>
@@ -448,10 +447,10 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Ils nous ont fait confiance
+              They trusted us
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              Des entreprises leaders qui ont choisi nos solutions
+              Leading companies that chose our solutions
             </p>
           </div>
 
@@ -501,10 +500,10 @@ export default function Home() {
               Contact
             </Badge>
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Nous Contacter
+              Contact Us
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              Contactez-nous pour exprimer vos besoins et voir comment nous pouvons vous aider
+              Contact us to express your needs and see how we can help you
             </p>
           </div>
 
@@ -515,7 +514,7 @@ export default function Home() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-slate-900">
-                      Nom & Prénom
+                      Full Name
                     </label>
                     <Input
                       id="name"
@@ -524,14 +523,14 @@ export default function Home() {
                       value={formData.name}
                       onChange={handleInputChange}
                       className="h-12 border-slate-200 focus:border-primary transition-colors"
-                      placeholder="Votre nom complet"
+                      placeholder="Your full name"
                       required
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="company" className="text-sm font-medium text-slate-900">
-                      Raison Sociale
+                      Company Name
                     </label>
                     <Input
                       id="company"
@@ -540,14 +539,14 @@ export default function Home() {
                       value={formData.company}
                       onChange={handleInputChange}
                       className="h-12 border-slate-200 focus:border-primary transition-colors"
-                      placeholder="Nom de votre entreprise"
+                      placeholder="Your company name"
                     />
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="email" className="text-sm font-medium text-slate-900">
-                        E-mail
+                        Email
                       </label>
                       <Input
                         id="email"
@@ -556,14 +555,14 @@ export default function Home() {
                         value={formData.email}
                         onChange={handleInputChange}
                         className="h-12 border-slate-200 focus:border-primary transition-colors"
-                        placeholder="votre@email.com"
+                        placeholder="your@email.com"
                         required
                       />
                     </div>
 
                     <div className="space-y-2">
                       <label htmlFor="phone" className="text-sm font-medium text-slate-900">
-                        Téléphone
+                        Phone
                       </label>
                       <Input
                         id="phone"
@@ -579,7 +578,7 @@ export default function Home() {
 
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium text-slate-900">
-                      Commentaire
+                      Message
                     </label>
                     <Textarea
                       id="message"
@@ -587,7 +586,7 @@ export default function Home() {
                       value={formData.message}
                       onChange={handleInputChange}
                       className="min-h-32 border-slate-200 focus:border-primary transition-colors resize-none"
-                      placeholder="Décrivez-nous votre projet..."
+                      placeholder="Tell us about your project..."
                       required
                     />
                   </div>
@@ -598,7 +597,7 @@ export default function Home() {
                     className="w-full gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
                   >
                     <Send className="h-4 w-4" />
-                    Envoyer le message
+                    Send message
                   </Button>
                 </form>
               </CardContent>
@@ -613,9 +612,9 @@ export default function Home() {
                     <Calendar className="h-8 w-8 text-white" />
                   </div>
                   <div className="space-y-3">
-                    <h3 className="text-2xl font-bold">Fixer un rendez-vous</h3>
+                    <h3 className="text-2xl font-bold">Schedule an appointment</h3>
                     <p className="text-white/90 leading-relaxed">
-                      Planifiez un appel avec notre équipe pour discuter de votre projet en détail. Nous sommes disponibles du lundi au vendredi de 9h à 18h.
+                      Schedule a call with our team to discuss your project in detail. We are available Monday to Friday from 9am to 6pm.
                     </p>
                   </div>
                   <Button
@@ -624,8 +623,8 @@ export default function Home() {
                     className="w-full gap-2 font-semibold"
                     asChild
                   >
-                    <Link href="/contact">
-                      Prendre rendez-vous
+                    <Link href="/en/contact-us">
+                      Book an appointment
                       <Calendar className="h-4 w-4" />
                     </Link>
                   </Button>
@@ -655,8 +654,8 @@ export default function Home() {
                         <Building2 className="h-5 w-5" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-slate-900 mb-1">Adresse</h4>
-                        <p className="text-slate-600 text-sm">Casablanca, Maroc</p>
+                        <h4 className="font-semibold text-slate-900 mb-1">Address</h4>
+                        <p className="text-slate-600 text-sm">Casablanca, Morocco</p>
                       </div>
                     </div>
                   </CardContent>
