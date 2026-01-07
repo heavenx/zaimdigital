@@ -148,7 +148,7 @@ export default function Home() {
             </div>
 
             {/* Values Grid */}
-            <div className="grid grid-cols-2 gap-6 animate-fade-in-right">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 animate-fade-in-right">
               <Card className="group border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-slate-50/50 backdrop-blur-sm hover:-translate-y-2">
                 <CardContent className="p-6 space-y-3">
                   <div className="h-12 w-12 rounded-xl bg-blue-100 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
