@@ -459,7 +459,7 @@ export default function LabcorpBTP() {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:14px_24px]" />
             <div className="absolute -top-1/2 -right-1/4 h-[400px] w-[400px] rounded-full bg-white/10 blur-3xl" />
 
-            <div className="relative grid gap-8 md:grid-cols-4 text-center text-white">
+            <div className="relative grid grid-cols-2 gap-8 md:grid-cols-4 text-center text-white place-items-center">
               {[
                 { icon: Shield, value: "Sécurisé", label: "Protocoles avancés" },
                 { icon: Database, value: "IMANOR", label: "Normes intégrées" },
@@ -468,8 +468,8 @@ export default function LabcorpBTP() {
               ].map((stat, idx) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={idx} className="space-y-2">
-                    {Icon && <Icon className="h-8 w-8 mx-auto mb-2 opacity-80" />}
+                  <div key={idx} className="space-y-2 flex flex-col items-center">
+                    {Icon && <Icon className="h-8 w-8 mb-2 opacity-80" />}
                     <div className="text-4xl font-bold">{stat.value}</div>
                     <div className="text-white/80">{stat.label}</div>
                   </div>
