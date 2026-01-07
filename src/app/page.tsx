@@ -1,13 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   ArrowRight,
   Sparkles,
@@ -20,27 +15,13 @@ import {
   Bot,
   Building2,
   Calendar,
-  Send
+  Clock
 } from "lucide-react";
+import { ContactForm } from "@/components/ContactForm";
+import { getPosts, formatDate, stripHtml, getReadingTime } from "@/lib/wordpress";
 
-export default function Home() {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Logique d'envoi du formulaire à implémenter
-    console.log("Form submitted:", formData);
-  };
+export default async function Home() {
+  const { posts } = await getPosts(6);
 
   return (
     <div className="flex min-h-screen flex-col overflow-hidden">
@@ -443,8 +424,111 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Derniers Articles Section */}
+      <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16 space-y-4">
+            <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
+              Blog
+            </Badge>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              Derniers <span className="text-primary">articles</span>
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              Restez informé des dernières tendances en développement logiciel et digitalisation
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => {
+              const featuredImage = post._embedded?.["wp:featuredmedia"]?.[0];
+              const categories = post._embedded?.["wp:term"]?.[0] || [];
+              const excerpt = stripHtml(post.excerpt.rendered);
+              const readingTime = getReadingTime(post.content.rendered);
+
+              return (
+                <Card
+                  key={post.id}
+                  className="group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2"
+                >
+                  <Link href={`/blog/${post.slug}`}>
+                    <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+                      {featuredImage ? (
+                        <Image
+                          src={featuredImage.source_url}
+                          alt={featuredImage.alt_text || post.title.rendered}
+                          fill
+                          unoptimized
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary to-blue-600">
+                          <span className="text-4xl font-bold text-white/50">
+                            {post.title.rendered.charAt(0)}
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+                  </Link>
+
+                  <CardContent className="p-6 space-y-4">
+                    {/* Categories */}
+                    <div className="flex flex-wrap gap-2">
+                      {categories.slice(0, 2).map((cat) => (
+                        <Badge
+                          key={cat.id}
+                          variant="secondary"
+                          className="bg-primary/10 text-primary hover:bg-primary/20 text-xs"
+                        >
+                          {cat.name}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    {/* Title */}
+                    <Link href={`/blog/${post.slug}`}>
+                      <h3
+                        className="text-lg font-bold text-slate-900 line-clamp-2 group-hover:text-primary transition-colors"
+                        dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                      />
+                    </Link>
+
+                    {/* Excerpt */}
+                    <p className="text-slate-600 line-clamp-2 text-sm leading-relaxed">
+                      {excerpt}
+                    </p>
+
+                    {/* Meta */}
+                    <div className="flex items-center gap-4 text-xs text-slate-500 pt-2 border-t border-slate-100">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="h-3.5 w-3.5" />
+                        <span>{formatDate(post.date)}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Clock className="h-3.5 w-3.5" />
+                        <span>{readingTime} min</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button size="lg" variant="outline" className="gap-2" asChild>
+              <Link href="/blog">
+                Voir tous les articles
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Clients Section */}
-      <section className="relative px-6 py-24 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+      <section className="relative px-6 py-24 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
@@ -490,7 +574,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative px-6 py-32 lg:px-8 bg-white overflow-hidden">
+      <section id="contact" className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
         {/* Background Decoration */}
         <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-3xl" />
         <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-gradient-to-br from-blue-500/10 to-transparent blur-3xl" />
@@ -512,95 +596,7 @@ export default function Home() {
             {/* Contact Form */}
             <Card className="border-none shadow-2xl bg-white">
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-slate-900">
-                      Nom & Prénom
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-primary transition-colors"
-                      placeholder="Votre nom complet"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium text-slate-900">
-                      Raison Sociale
-                    </label>
-                    <Input
-                      id="company"
-                      name="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-primary transition-colors"
-                      placeholder="Nom de votre entreprise"
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium text-slate-900">
-                        E-mail
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="h-12 border-slate-200 focus:border-primary transition-colors"
-                        placeholder="votre@email.com"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-medium text-slate-900">
-                        Téléphone
-                      </label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="h-12 border-slate-200 focus:border-primary transition-colors"
-                        placeholder="+212 6XX XXX XXX"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-slate-900">
-                      Commentaire
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="min-h-32 border-slate-200 focus:border-primary transition-colors resize-none"
-                      placeholder="Décrivez-nous votre projet..."
-                      required
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
-                  >
-                    <Send className="h-4 w-4" />
-                    Envoyer le message
-                  </Button>
-                </form>
+                <ContactForm />
               </CardContent>
             </Card>
 
@@ -624,7 +620,7 @@ export default function Home() {
                     className="w-full gap-2 font-semibold"
                     asChild
                   >
-                    <Link href="/contact">
+                    <Link href="/contactez-nous">
                       Prendre rendez-vous
                       <Calendar className="h-4 w-4" />
                     </Link>
