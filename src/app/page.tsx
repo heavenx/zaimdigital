@@ -424,6 +424,52 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Clients Section */}
+      <section className="relative px-6 py-24 lg:px-8 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Ils nous ont fait confiance
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              Des entreprises leaders qui ont choisi nos solutions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 items-center">
+            {[
+              { src: "/images/clients/LGTP.png", alt: "LGTP" },
+              { src: "/images/clients/Mobilize.png", alt: "Mobilize" },
+              { src: "/images/clients/logo-teamwill.png", alt: "Teamwill" },
+              { src: "/images/clients/Tachnopark.png", alt: "Technopark" },
+              { src: "/images/clients/GSS.png", alt: "GSS" },
+              { src: "/images/clients/FIM.png", alt: "FIM" },
+              { src: "/images/clients/LSTP-removebg-preview.png", alt: "LSTP" },
+              { src: "/images/clients/Maroc-Leasing.webp", alt: "Maroc Leasing" },
+              { src: "/images/clients/S2M.png", alt: "S2M" },
+              { src: "/images/clients/BM.png", alt: "BM" },
+              { src: "/images/clients/EasyDmat.webp", alt: "EasyDmat" },
+              { src: "/images/clients/Altiluz.webp", alt: "Altiluz" },
+              { src: "/images/clients/LMGC.png", alt: "LMGC" },
+              { src: "/images/clients/MS.png", alt: "MS" },
+            ].map((client, i) => (
+              <div
+                key={i}
+                className="group flex h-24 items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 grayscale hover:grayscale-0"
+              >
+                <Image
+                  src={client.src}
+                  alt={client.alt}
+                  width={120}
+                  height={60}
+                  className="max-h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Derniers Articles Section */}
       <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl">
@@ -523,52 +569,6 @@ export default async function Home() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Clients Section */}
-      <section className="relative px-6 py-24 lg:px-8 bg-white">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Ils nous ont fait confiance
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              Des entreprises leaders qui ont choisi nos solutions
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 items-center">
-            {[
-              { src: "/images/clients/LGTP.png", alt: "LGTP" },
-              { src: "/images/clients/Mobilize.png", alt: "Mobilize" },
-              { src: "/images/clients/logo-teamwill.png", alt: "Teamwill" },
-              { src: "/images/clients/Tachnopark.png", alt: "Technopark" },
-              { src: "/images/clients/GSS.png", alt: "GSS" },
-              { src: "/images/clients/FIM.png", alt: "FIM" },
-              { src: "/images/clients/LSTP-removebg-preview.png", alt: "LSTP" },
-              { src: "/images/clients/Maroc-Leasing.webp", alt: "Maroc Leasing" },
-              { src: "/images/clients/S2M.png", alt: "S2M" },
-              { src: "/images/clients/BM.png", alt: "BM" },
-              { src: "/images/clients/EasyDmat.webp", alt: "EasyDmat" },
-              { src: "/images/clients/Altiluz.webp", alt: "Altiluz" },
-              { src: "/images/clients/LMGC.png", alt: "LMGC" },
-              { src: "/images/clients/MS.png", alt: "MS" },
-            ].map((client, i) => (
-              <div
-                key={i}
-                className="group flex h-24 items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 grayscale hover:grayscale-0"
-              >
-                <Image
-                  src={client.src}
-                  alt={client.alt}
-                  width={120}
-                  height={60}
-                  className="max-h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-            ))}
           </div>
         </div>
       </section>
