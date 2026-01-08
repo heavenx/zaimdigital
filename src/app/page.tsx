@@ -200,8 +200,8 @@ export default async function Home() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
             {/* LABCORP BTP */}
-            <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2">
-              <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+            <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2 p-0 gap-0">
+              <div className="relative h-72 w-full overflow-hidden bg-slate-200">
                 <Image
                   src="/images/labcorp-btp.webp"
                   alt="LABCORP BTP"
@@ -220,7 +220,7 @@ export default async function Home() {
                 </p>
                 <Button
                   variant="ghost"
-                  className="group/btn w-full gap-2 text-primary hover:text-primary hover:bg-primary/10 font-semibold"
+                  className="group/btn gap-2 text-primary hover:text-primary bg-primary/5 hover:bg-primary/15 font-semibold"
                   asChild
                 >
                   <Link href="/nos_produits/labcorp-laboratoire-btp/">
@@ -232,8 +232,8 @@ export default async function Home() {
             </Card>
 
             {/* SMOOTHFIX GMAO */}
-            <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2">
-              <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+            <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2 p-0 gap-0">
+              <div className="relative h-72 w-full overflow-hidden bg-slate-200">
                 <Image
                   src="/images/smoothfix-gmao.jpg"
                   alt="SMOOTHFIX GMAO"
@@ -252,7 +252,7 @@ export default async function Home() {
                 </p>
                 <Button
                   variant="ghost"
-                  className="group/btn w-full gap-2 text-primary hover:text-primary hover:bg-primary/10 font-semibold"
+                  className="group/btn gap-2 text-primary hover:text-primary bg-primary/5 hover:bg-primary/15 font-semibold"
                   asChild
                 >
                   <Link href="/nos_produits/smoothfix-gmao/">
@@ -264,8 +264,8 @@ export default async function Home() {
             </Card>
 
             {/* AGRONET */}
-            <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2">
-              <div className="relative h-72 w-full overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+            <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2 p-0 gap-0">
+              <div className="relative h-72 w-full overflow-hidden bg-slate-200">
                 <Image
                   src="/images/agronet.webp"
                   alt="AGRONET"
@@ -284,7 +284,7 @@ export default async function Home() {
                 </p>
                 <Button
                   variant="ghost"
-                  className="group/btn w-full gap-2 text-primary hover:text-primary hover:bg-primary/10 font-semibold"
+                  className="group/btn gap-2 text-primary hover:text-primary bg-primary/5 hover:bg-primary/15 font-semibold"
                   asChild
                 >
                   <Link href="/agronet-gestion-ferme/">
@@ -296,7 +296,7 @@ export default async function Home() {
             </Card>
 
             {/* GESTION MARITIME */}
-            <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-primary via-blue-600 to-indigo-600 text-white hover:-translate-y-2">
+            <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-primary via-blue-600 to-indigo-600 text-white hover:-translate-y-2 p-0 gap-0">
               <div className="relative h-72 w-full overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:14px_24px]" />
                 <div className="relative z-10 space-y-4 text-center p-8">
@@ -315,7 +315,7 @@ export default async function Home() {
                 </p>
                 <Button
                   variant="secondary"
-                  className="group/btn w-full gap-2 font-semibold"
+                  className="group/btn gap-2 font-semibold"
                   asChild
                 >
                   <Link href="/nos_produits/developpement-specifique/">
