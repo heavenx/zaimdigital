@@ -46,7 +46,7 @@ export function Footer() {
   const productsColumnFR: FooterColumn = {
     title: "Nos Produits",
     links: [
-      { label: "LABCORP BTP", href: "/nos_produits/labcorp-laboratoire-btp/" },
+      { label: "LABCORP BTP – LIMS", href: "/nos_produits/labcorp-laboratoire-btp/" },
       { label: "SMOOTHFIX GMAO", href: "/nos_produits/smoothfix-gmao/" },
       { label: "AGRONET", href: "/agronet-gestion-ferme/" },
       { label: "Gestion Maritime", href: "/nos_produits/developpement-specifique/" },
@@ -56,7 +56,7 @@ export function Footer() {
   const productsColumnEN: FooterColumn = {
     title: "Our Products",
     links: [
-      { label: "LABCORP BTP", href: "/en/construction-laboratory-labcorp/" },
+      { label: "LABCORP BTP – LIMS", href: "/en/construction-laboratory-labcorp/" },
       { label: "SMOOTHFIX GMAO", href: "/en/gmao-cmms/" },
       { label: "AGRONET", href: "/en/agronet-farm-management/" },
       { label: "Maritime Management", href: "/en/custom-development/" },

@@ -34,10 +34,10 @@ interface Product {
 const productsFR: Product[] = [
   {
     icon: Beaker,
-    title: "LABCORP BTP",
-    description: "ERP pour laboratoires d'analyse BTP",
+    title: "LABCORP BTP – LIMS",
+    description: "Logiciel de gestion de laboratoire BTP",
     href: "/nos_produits/labcorp-laboratoire-btp",
-    badge: "ERP",
+    badge: "LIMS",
     badgeColor: "bg-blue-100 text-blue-700"
   },
   {
