@@ -364,12 +364,12 @@ export default async function Home() {
                     Nous concevons des solutions logicielles personnalisées adaptées à vos besoins métiers. De la conception à la mise en production, chaque application est pensée pour optimiser vos processus et accompagner votre croissance.
                   </p>
                 </div>
-                <div className="pt-4">
-                  <div className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
+                <Link href="/nos_produits/developpement-specifique" className="pt-4 block">
+                  <span className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
                     Découvrir
                     <ArrowRight className="h-4 w-4" />
-                  </div>
-                </div>
+                  </span>
+                </Link>
               </CardContent>
             </Card>
 
@@ -388,12 +388,12 @@ export default async function Home() {
                     Nous vous aidons à intégrer et personnaliser des CRM performants tels qu'Odoo et Dolibarr. Nos experts assurent un déploiement rapide et une configuration sur mesure pour améliorer votre gestion client et commerciale.
                   </p>
                 </div>
-                <div className="pt-4">
-                  <div className="inline-flex items-center gap-2 text-green-600 font-semibold group-hover:gap-3 transition-all duration-300">
+                <Link href="/nos_produits/integrateur-dolibarr" className="pt-4 block">
+                  <span className="inline-flex items-center gap-2 text-green-600 font-semibold group-hover:gap-3 transition-all duration-300">
                     Découvrir
                     <ArrowRight className="h-4 w-4" />
-                  </div>
-                </div>
+                  </span>
+                </Link>
               </CardContent>
             </Card>
 
@@ -412,12 +412,12 @@ export default async function Home() {
                     Nous exploitons le potentiel de l'intelligence artificielle et des outils d'automatisation comme Make et n8n. Résultat : des workflows intelligents qui réduisent les tâches répétitives, augmentent la productivité et connectent vos outils entre eux.
                   </p>
                 </div>
-                <div className="pt-4">
-                  <div className="inline-flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-3 transition-all duration-300">
+                <Link href="/nos_produits/developpement-specifique" className="pt-4 block">
+                  <span className="inline-flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-3 transition-all duration-300">
                     Découvrir
                     <ArrowRight className="h-4 w-4" />
-                  </div>
-                </div>
+                  </span>
+                </Link>
               </CardContent>
             </Card>
           </div>

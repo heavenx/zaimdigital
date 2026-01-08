@@ -13,7 +13,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { LanguageSwitcher } from "./LanguageSwitcher"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 
@@ -83,20 +82,12 @@ const productsFR: Product[] = [
   }
 ]
 
-const navigationFR: NavItem[] = [
+const navigation: NavItem[] = [
   { label: "Accueil", href: "/" },
   { label: "À propos", href: "/a-propos/" },
   { label: "Nos Produits", href: "/nos_produits/", hasMegaMenu: true },
   { label: "Blog", href: "/blog/" },
   { label: "Contact", href: "/contactez-nous/" },
-]
-
-const navigationEN: NavItem[] = [
-  { label: "Home", href: "/en/home/" },
-  { label: "About", href: "/en/about/" },
-  { label: "Products", href: "/nos_produits/", hasMegaMenu: true },
-  { label: "Blog", href: "/blog/" },
-  { label: "Contact", href: "/en/contact-us/" },
 ]
 
 export function Header() {
@@ -106,9 +97,6 @@ export function Header() {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = React.useState(false)
   const megaMenuRef = React.useRef<HTMLDivElement>(null)
   const megaMenuTriggerRef = React.useRef<HTMLDivElement>(null)
-
-  const isEnglish = pathname.startsWith("/en")
-  const navigation = isEnglish ? navigationEN : navigationFR
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -137,7 +125,7 @@ export function Header() {
   }, [])
 
   const isActive = (href: string) => {
-    if (href === "/" || href === "/en/home/") {
+    if (href === "/") {
       return pathname === href
     }
     return pathname.startsWith(href)
@@ -156,7 +144,7 @@ export function Header() {
         {/* Main Navigation */}
         <div className="flex items-center justify-between h-20 gap-8">
           {/* Logo */}
-          <Link href={isEnglish ? "/en/home/" : "/"} className="flex-shrink-0 group">
+          <Link href="/" className="flex-shrink-0 group">
             <Image
               src="/images/logo.png"
               alt="ZAIM DIGITAL"
@@ -209,14 +197,14 @@ export function Header() {
                     <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 w-[700px]">
                       <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
                         <h3 className="text-lg font-bold text-slate-900">
-                          {isEnglish ? "Our Products" : "Nos Produits"}
+                          Nos Produits
                         </h3>
                         <Link
                           href="/nos_produits/"
                           className="text-sm text-primary hover:underline flex items-center gap-1"
                           onClick={() => setIsMegaMenuOpen(false)}
                         >
-                          {isEnglish ? "See all" : "Voir tout"}
+                          Voir tout
                           <ArrowRight className="h-3 w-3" />
                         </Link>
                       </div>
@@ -277,10 +265,9 @@ export function Header() {
 
           {/* Desktop Right Side */}
           <div className="hidden lg:flex items-center gap-4">
-            <LanguageSwitcher />
-            <Link href={isEnglish ? "/en/contact-us/" : "/contactez-nous/"}>
+            <Link href="/contactez-nous/">
               <Button className="group bg-primary hover:bg-primary/90 text-white rounded-full px-6 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300">
-                {isEnglish ? "Get Started" : "Démarrer"}
+                Démarrer
                 <ArrowRight className="ml-2 size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
             </Link>
@@ -362,18 +349,11 @@ export function Header() {
 
                 <Separator className="bg-gray-100" />
 
-                {/* Mobile Language Switcher */}
-                <div className="px-4">
-                  <LanguageSwitcher />
-                </div>
-
-                <Separator className="bg-gray-100" />
-
                 {/* Mobile CTA */}
                 <div className="px-4">
-                  <Link href={isEnglish ? "/en/contact-us/" : "/contactez-nous/"} onClick={() => setIsOpen(false)}>
+                  <Link href="/contactez-nous/" onClick={() => setIsOpen(false)}>
                     <Button className="w-full group bg-primary hover:bg-primary/90 text-white rounded-xl py-6 shadow-lg shadow-primary/25">
-                      {isEnglish ? "Get Started" : "Démarrer un projet"}
+                      Démarrer un projet
                       <ArrowRight className="ml-2 size-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Button>
                   </Link>
