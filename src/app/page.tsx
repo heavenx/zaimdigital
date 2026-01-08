@@ -596,7 +596,7 @@ export default async function Home() {
             {/* Contact Form */}
             <Card className="border-none shadow-2xl bg-white">
               <CardContent className="p-8">
-                <ContactForm />
+                <ContactForm sourcePage="Page d'accueil (/)" />
               </CardContent>
             </Card>
 

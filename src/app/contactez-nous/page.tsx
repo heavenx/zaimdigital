@@ -17,25 +17,67 @@ import {
   Linkedin,
   Instagram,
   Youtube,
-  Sparkles
+  Sparkles,
+  Loader2,
+  CheckCircle2,
+  AlertCircle
 } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
+    name: "",
     company: "",
     email: "",
     phone: "",
     message: ""
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Logique d'envoi du formulaire à implémenter
-    console.log("Form submitted:", formData);
+    setIsLoading(true);
+    setStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          sourcePage: "Page Contact (/contactez-nous)",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        setStatusMessage(data.message || "Votre message a été envoyé avec succès !");
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          message: ""
+        });
+      } else {
+        setStatus("error");
+        setStatusMessage(data.error || "Une erreur est survenue. Veuillez réessayer.");
+      }
+    } catch {
+      setStatus("error");
+      setStatusMessage("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -90,6 +132,37 @@ export default function ContactPage() {
             <Card className="border-none shadow-2xl bg-white">
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {status === "success" && (
+                    <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700">
+                      <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                      <p>{statusMessage}</p>
+                    </div>
+                  )}
+
+                  {status === "error" && (
+                    <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+                      <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                      <p>{statusMessage}</p>
+                    </div>
+                  )}
+
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium text-slate-900">
+                      Nom complet *
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="h-12 border-slate-200 focus:border-primary transition-colors"
+                      placeholder="Votre nom"
+                      required
+                      disabled={isLoading}
+                    />
+                  </div>
+
                   <div className="space-y-2">
                     <label htmlFor="company" className="text-sm font-medium text-slate-900">
                       Raison Sociale
@@ -102,13 +175,13 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       className="h-12 border-slate-200 focus:border-primary transition-colors"
                       placeholder="Nom de votre entreprise"
-                      required
+                      disabled={isLoading}
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium text-slate-900">
-                      Email
+                      Email *
                     </label>
                     <Input
                       id="email"
@@ -119,6 +192,7 @@ export default function ContactPage() {
                       className="h-12 border-slate-200 focus:border-primary transition-colors"
                       placeholder="votre@email.com"
                       required
+                      disabled={isLoading}
                     />
                   </div>
 
@@ -134,13 +208,13 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       className="h-12 border-slate-200 focus:border-primary transition-colors"
                       placeholder="+212 6XX XXX XXX"
-                      required
+                      disabled={isLoading}
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium text-slate-900">
-                      Commentaires
+                      Commentaires *
                     </label>
                     <Textarea
                       id="message"
@@ -150,6 +224,7 @@ export default function ContactPage() {
                       className="min-h-32 border-slate-200 focus:border-primary transition-colors resize-none"
                       placeholder="Décrivez-nous votre projet..."
                       required
+                      disabled={isLoading}
                     />
                   </div>
 
@@ -157,9 +232,19 @@ export default function ContactPage() {
                     type="submit"
                     size="lg"
                     className="w-full gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                    disabled={isLoading}
                   >
-                    <Send className="h-4 w-4" />
-                    Envoyer
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Envoi en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4" />
+                        Envoyer
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
