@@ -327,7 +327,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-slate-900 mb-1">Adresse</h4>
-                        <p className="text-slate-600">Casablanca, Maroc</p>
+                        <p className="text-slate-600">Technopark – 4ème étage Bureau N° 451, Casablanca, Maroc</p>
                       </div>
                     </div>
                   </CardContent>

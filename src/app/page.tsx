@@ -47,15 +47,15 @@ export default async function Home() {
 
             {/* Hero Title with Gradient */}
             <h1 className="max-w-5xl text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl animate-slide-up">
-              Transformez votre vision{" "}
+              Transformez votre gestion métier{" "}
               <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent animate-gradient">
-                en réalité digitale
+                avec des logiciels spécialisés
               </span>
             </h1>
 
             {/* Hero Description */}
-            <p className="max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-xl lg:text-2xl font-light animate-slide-up-delay">
-              Zaim Digital développe depuis 2021 des logiciels de gestion performants alliant technologie web et intelligence artificielle pour répondre aux besoins spécifiques de votre activité.
+            <p className="max-w-4xl text-lg leading-relaxed text-slate-600 sm:text-xl lg:text-2xl font-light animate-slide-up-delay">
+              Zaim Digital est éditeur et distributeur de solutions logicielles depuis 2021, dont LabCorp BTP – LIMS, dédiées au BTP, aux laboratoires, à la maintenance et à l'agriculture. Nos logiciels de gestion allient technologies web, intelligence artificielle et expertise métier pour s'adapter précisément aux exigences de votre activité.
             </p>
 
             {/* CTA Buttons */}
@@ -199,12 +199,12 @@ export default async function Home() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-            {/* LABCORP BTP */}
+            {/* LABCORP BTP - LIMS */}
             <Card className="group overflow-hidden border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2 p-0 gap-0">
               <div className="relative h-72 w-full overflow-hidden bg-slate-200">
                 <Image
                   src="/images/labcorp-btp.webp"
-                  alt="LABCORP BTP"
+                  alt="LABCORP BTP - LIMS"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -212,11 +212,11 @@ export default async function Home() {
               </div>
               <CardContent className="p-8 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold text-slate-900">LABCORP BTP</h3>
-                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">ERP BTP</Badge>
+                  <h3 className="text-2xl font-bold text-slate-900">LABCORP BTP – LIMS</h3>
+                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">LIMS BTP</Badge>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Un ERP complet conçu pour digitaliser les laboratoires d'analyse BTP et les centrales à béton. Il automatise la gestion des essais, des rapports et du suivi qualité pour offrir une traçabilité optimale et un gain de temps considérable.
+                  LabCorp BTP – LIMS est un logiciel de gestion de laboratoire (LIMS) dédié aux laboratoires d'analyses BTP, centres d'essais et centrales à béton. Il permet la gestion complète des essais matériaux, des échantillons, des rapports d'analyse, du suivi qualité et de la traçabilité réglementaire.
                 </p>
                 <Button
                   variant="ghost"
@@ -248,7 +248,7 @@ export default async function Home() {
                   <Badge className="bg-green-100 text-green-700 hover:bg-green-200">GMAO</Badge>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Une solution GMAO simple et rapide à déployer, pensée pour la maintenance préventive et curative. Elle permet un suivi précis des interventions, des équipements et des coûts afin d'améliorer la productivité et la fiabilité des opérations.
+                  SmoothFix GMAO est une solution de gestion de maintenance assistée par ordinateur conçue pour la maintenance préventive et corrective. Elle assure le suivi des équipements, la planification des interventions, la gestion des pièces et l'analyse des coûts de maintenance.
                 </p>
                 <Button
                   variant="ghost"
@@ -277,10 +277,10 @@ export default async function Home() {
               <CardContent className="p-8 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-2xl font-bold text-slate-900">AGRONET</h3>
-                  <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-200">AgriTech</Badge>
+                  <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-200">ERP Agricole</Badge>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Un ERP de gestion agricole intelligent dédié à l'organisation des entrées, sorties et à la gestion d'élevage. Spécialement adapté aux fermes modernes, il centralise les données pour un pilotage efficace et durable des activités agricoles.
+                  Agronet est un logiciel de gestion agricole (ERP agricole) destiné aux exploitations agricoles et élevages modernes. Il centralise la gestion des entrées et sorties, le suivi d'élevage, les données de production et les indicateurs clés pour un pilotage agricole précis et rentable.
                 </p>
                 <Button
                   variant="ghost"
@@ -311,7 +311,7 @@ export default async function Home() {
                   <Badge className="bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm">ERP Maritime</Badge>
                 </div>
                 <p className="text-white/90 leading-relaxed">
-                  Un ERP complet dédié aux transitaires et acteurs du secteur maritime. Connecté au système BADR, il optimise la gestion des dossiers, des déclarations et des opérations logistiques avec une précision optimale.
+                  Notre ERP Maritime est une solution dédiée aux transitaires, commissionnaires et acteurs du transport maritime. Connecté au système BADR, il permet la gestion des dossiers, des déclarations douanières, du suivi logistique avec fiabilité et conformité réglementaire.
                 </p>
                 <Button
                   variant="secondary"
@@ -470,8 +470,84 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Témoignages Section */}
+      <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-gradient-to-br from-blue-500/5 to-transparent blur-3xl" />
+
+        <div className="mx-auto max-w-7xl relative z-10">
+          <div className="text-center mb-16 space-y-4">
+            <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
+              Témoignages
+            </Badge>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              Ce que nos <span className="text-primary">clients</span> disent
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              Découvrez les retours d'expérience de nos clients qui utilisent nos solutions au quotidien
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Témoignage 1 */}
+            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
+              <CardContent className="p-8 space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+                    MK
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-slate-900">Mr Mohamed El Kortbi</h4>
+                    <p className="text-slate-600">Gérant Associé</p>
+                    <p className="text-primary font-medium">Laboratoire des Matériaux et Génie Civil</p>
+                  </div>
+                </div>
+                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-primary pl-4">
+                  "Nous avons cru au logiciel LABCORP pour construire notre système d'information du laboratoire car nous avons fait confiance à une jeune équipe entrepreneuse qui est depuis notre première réunion à l'écoute de notre demande et a su transformer nos attentes en livrables facilitant nos processus conformément à notre système qualité accrédité NM ISO/CEI 17025. L'application est ergonomique, facile à déployer à tous les niveaux du laboratoire permettant un travail collaboratif sans accumuler les retards et dysfonctionnements."
+                </blockquote>
+                <Link
+                  href="https://www.linkedin.com/in/kortbi/"
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
+                >
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  Voir sur LinkedIn
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* Témoignage 2 */}
+            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
+              <CardContent className="p-8 space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+                    OB
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-slate-900">Mr Othman Bensator</h4>
+                    <p className="text-slate-600">Directeur Associé</p>
+                    <p className="text-primary font-medium">Laboratoire des Matériaux et Génie Civil</p>
+                  </div>
+                </div>
+                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-green-500 pl-4">
+                  "La solution LABCORP BTP – LIMS est une application dont les bénéfices sont inéluctablement favorables en terme de suivi, reporting, contrôle, financier. Nous sommes à ce jour satisfaits de l'objectif de la voir appliquée à toutes les disciplines. À ce jour, dans le béton, elle nous a résolu beaucoup de problèmes liés à la gestion prélèvement, de leurs réceptions au laboratoire, de la gestion du traitement et de l'envoi au client des rapports d'essais à temps."
+                </blockquote>
+                <Link
+                  href="https://www.linkedin.com/in/othman-bensator-a8364425/"
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
+                >
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  Voir sur LinkedIn
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Derniers Articles Section */}
-      <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+      <section className="relative px-6 py-32 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16 space-y-4">
             <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">

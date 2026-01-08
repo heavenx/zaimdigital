@@ -18,9 +18,27 @@ import {
   Building2
 } from "lucide-react";
 
-export const metadata = {
-  title: "À propos - ZAIM DIGITAL",
-  description: "Découvrez ZAIM DIGITAL, une équipe passionnée au service de votre transformation digitale.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "À propos de ZAIM DIGITAL - Éditeur de Logiciels au Maroc",
+  description:
+    "Découvrez ZAIM DIGITAL, éditeur de logiciels métiers depuis 2021. Équipe passionnée spécialisée en développement web, LIMS, GMAO et ERP à Casablanca.",
+  keywords: [
+    "ZAIM DIGITAL",
+    "éditeur logiciels Maroc",
+    "développement logiciel Casablanca",
+    "entreprise IT Maroc",
+    "transformation digitale",
+  ],
+  openGraph: {
+    title: "À propos de ZAIM DIGITAL",
+    description: "Éditeur de logiciels métiers depuis 2021 à Casablanca, Maroc.",
+    url: "https://www.zaimdigital.com/a-propos",
+  },
+  alternates: {
+    canonical: "https://www.zaimdigital.com/a-propos",
+  },
 };
 
 export default function AboutPage() {

@@ -183,23 +183,21 @@ export default function LabcorpBTP() {
                 className="border-primary/20 bg-primary/5 text-primary px-6 py-2 text-sm font-medium backdrop-blur-sm hover:bg-primary/10 transition-all duration-300"
               >
                 <Sparkles className="h-3.5 w-3.5 mr-2" />
-                ERP Laboratoire BTP
+                LIMS BTP
               </Badge>
 
               {/* Hero Title */}
-              <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-                LABCORP BTP :{" "}
+              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+                LabCorp BTP – LIMS :{" "}
                 <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent">
-                  Solution digitale complète
+                  logiciel de gestion de laboratoire
                 </span>{" "}
-                pour laboratoires BTP
+                BTP et génie civil
               </h1>
 
               {/* Hero Description */}
               <p className="text-lg leading-relaxed text-slate-600 sm:text-xl font-light">
-                LABCORP BTP est une solution digitale complète permettant de gérer les essais de laboratoire BTP
-                et de faciliter les calculs avec les normes imposées. Simplifiez la gestion de votre laboratoire
-                et facilitez la préparation aux certifications.
+                LabCorp BTP – LIMS est un logiciel LIMS conçu pour les laboratoires BTP (contrôle externe, centrale à béton, carrières, postes d'enrobage). Il digitalise votre activité de la réception de l'échantillon jusqu'à l'émission du rapport d'essai, avec une traçabilité complète et un workflow de validation.
               </p>
 
               {/* CTA Buttons */}
@@ -254,8 +252,48 @@ export default function LabcorpBTP() {
         </div>
       </section>
 
+      {/* Pour quels laboratoires ? Section */}
+      <section className="relative px-6 py-24 lg:px-8 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-12 space-y-4">
+            <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
+              Cibles
+            </Badge>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              Pour quels <span className="text-primary">laboratoires</span> ?
+            </h2>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            <Card className="border-none shadow-xl bg-gradient-to-br from-primary to-blue-600 text-white overflow-hidden">
+              <CardContent className="p-8 space-y-4">
+                <div className="h-14 w-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <Beaker className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold">Laboratoires de contrôle externe</h3>
+                <p className="text-white/90 leading-relaxed">
+                  Essais, rapports unifiés, traçabilité complète. Idéal pour les laboratoires réalisant des contrôles qualité pour des tiers.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white overflow-hidden">
+              <CardContent className="p-8 space-y-4">
+                <div className="h-14 w-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <Database className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold">Laboratoires producteurs</h3>
+                <p className="text-white/90 leading-relaxed">
+                  Centrales à béton, carrières, postes d'enrobage. Contrôles organisés par site avec gestion de la production intégrée.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Défis Section */}
-      <section className="relative px-6 py-32 lg:px-8 bg-white">
+      <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16 space-y-4 animate-fade-in">
             <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
@@ -266,7 +304,7 @@ export default function LabcorpBTP() {
               <span className="text-primary">résolvons</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              LABCORP BTP répond aux enjeux majeurs des laboratoires d'analyse BTP
+              LabCorp BTP – LIMS répond aux enjeux majeurs des laboratoires d'analyse BTP
             </p>
           </div>
 
