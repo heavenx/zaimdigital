@@ -34,6 +34,47 @@ const nextConfig: NextConfig = {
           destination: "/blog",
           permanent: true,
         },
+        // Old English pages redirects
+        {
+          source: "/en/website-creation",
+          destination: "/nos_produits/creation_site_web",
+          permanent: true,
+        },
+        {
+          source: "/en/gmao-cmms",
+          destination: "/nos_produits/smoothfix-gmao",
+          permanent: true,
+        },
+        {
+          source: "/en/construction-laboratory-labcorp",
+          destination: "/nos_produits/labcorp-laboratoire-btp",
+          permanent: true,
+        },
+        {
+          source: "/en/custom-development",
+          destination: "/nos_produits/developpement-specifique",
+          permanent: true,
+        },
+        {
+          source: "/en/contact-us",
+          destination: "/contactez-nous",
+          permanent: true,
+        },
+        {
+          source: "/en/home",
+          destination: "/",
+          permanent: true,
+        },
+        {
+          source: "/en/about",
+          destination: "/a-propos",
+          permanent: true,
+        },
+        {
+          source: "/en",
+          destination: "/",
+          permanent: true,
+        },
       ];
     } catch {
       // Fallback if WordPress is unreachable
@@ -46,6 +87,47 @@ const nextConfig: NextConfig = {
         {
           source: "/tag/:slug",
           destination: "/blog",
+          permanent: true,
+        },
+        // Old English pages redirects
+        {
+          source: "/en/website-creation",
+          destination: "/nos_produits/creation_site_web",
+          permanent: true,
+        },
+        {
+          source: "/en/gmao-cmms",
+          destination: "/nos_produits/smoothfix-gmao",
+          permanent: true,
+        },
+        {
+          source: "/en/construction-laboratory-labcorp",
+          destination: "/nos_produits/labcorp-laboratoire-btp",
+          permanent: true,
+        },
+        {
+          source: "/en/custom-development",
+          destination: "/nos_produits/developpement-specifique",
+          permanent: true,
+        },
+        {
+          source: "/en/contact-us",
+          destination: "/contactez-nous",
+          permanent: true,
+        },
+        {
+          source: "/en/home",
+          destination: "/",
+          permanent: true,
+        },
+        {
+          source: "/en/about",
+          destination: "/a-propos",
+          permanent: true,
+        },
+        {
+          source: "/en",
+          destination: "/",
           permanent: true,
         },
       ];
