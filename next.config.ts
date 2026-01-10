@@ -34,6 +34,22 @@ const nextConfig: NextConfig = {
           destination: "/blog",
           permanent: true,
         },
+        // Old spam/hacked pages - redirect to homepage
+        {
+          source: "/lwnwt/:path*",
+          destination: "/",
+          permanent: true,
+        },
+        {
+          source: "/rcoqp6k/:path*",
+          destination: "/",
+          permanent: true,
+        },
+        {
+          source: "/kkx/:path*",
+          destination: "/",
+          permanent: true,
+        },
         // Old page redirects
         {
           source: "/contact",
@@ -119,6 +135,22 @@ const nextConfig: NextConfig = {
         {
           source: "/tag/:slug",
           destination: "/blog",
+          permanent: true,
+        },
+        // Old spam/hacked pages - redirect to homepage
+        {
+          source: "/lwnwt/:path*",
+          destination: "/",
+          permanent: true,
+        },
+        {
+          source: "/rcoqp6k/:path*",
+          destination: "/",
+          permanent: true,
+        },
+        {
+          source: "/kkx/:path*",
+          destination: "/",
           permanent: true,
         },
         // Old page redirects
