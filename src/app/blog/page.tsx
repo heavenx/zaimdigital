@@ -5,9 +5,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Calendar, Clock, Sparkles } from "lucide-react";
 import { getPosts, formatDate, stripHtml, getReadingTime } from "@/lib/wordpress";
 
-export const metadata = {
-  title: "Blog | ZAIM DIGITAL - Actualités et Conseils",
-  description: "Découvrez nos articles sur le développement logiciel, la digitalisation des entreprises, les ERP et les solutions métiers.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | ZAIM DIGITAL - Actualités et Conseils IT",
+  description:
+    "Blog ZAIM DIGITAL : articles sur le développement logiciel, LIMS, GMAO, ERP, transformation digitale et actualités tech au Maroc.",
+  alternates: {
+    canonical: "https://www.zaimdigital.com/blog",
+  },
+  openGraph: {
+    title: "Blog ZAIM DIGITAL | Actualités IT",
+    description:
+      "Découvrez nos articles sur le développement logiciel, la transformation digitale et les tendances tech.",
+    url: "https://www.zaimdigital.com/blog",
+  },
 };
 
 export const revalidate = 3600; // Revalidate every hour

@@ -5,9 +5,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Code, Globe, Database, Sparkles, LucideIcon } from "lucide-react";
 
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Nos Produits | ZAIM DIGITAL - Solutions Logicielles Innovantes",
-  description: "Découvrez nos solutions logicielles sur mesure : LABCORP BTP, SMOOTHFIX GMAO, AGRONET, création de sites web et développement spécifique.",
+  description:
+    "Découvrez nos solutions logicielles sur mesure : LABCORP BTP, SMOOTHFIX GMAO, AGRONET, création de sites web et développement spécifique.",
+  alternates: {
+    canonical: "https://www.zaimdigital.com/nos_produits",
+  },
+  openGraph: {
+    title: "Nos Produits | ZAIM DIGITAL",
+    description:
+      "Solutions logicielles métiers : LABCORP BTP, SMOOTHFIX GMAO, AGRONET et développement sur mesure.",
+    url: "https://www.zaimdigital.com/nos_produits",
+  },
 };
 
 interface Product {

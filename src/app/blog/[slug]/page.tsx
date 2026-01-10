@@ -38,9 +38,13 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `${stripHtml(post.title.rendered)} | ZAIM DIGITAL Blog`,
     description: excerpt.substring(0, 160),
+    alternates: {
+      canonical: `https://www.zaimdigital.com/blog/${slug}`,
+    },
     openGraph: {
       title: stripHtml(post.title.rendered),
       description: excerpt.substring(0, 160),
+      url: `https://www.zaimdigital.com/blog/${slug}`,
       images: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url
         ? [post._embedded["wp:featuredmedia"][0].source_url]
         : [],
