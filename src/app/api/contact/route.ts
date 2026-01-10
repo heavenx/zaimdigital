@@ -13,6 +13,10 @@ const transporter = nodemailer.createTransport({
   },
   connectionTimeout: 10000, // 10 seconds
   greetingTimeout: 10000,
+  tls: {
+    // TODO: Remove this when Genious renews the SSL certificate
+    rejectUnauthorized: false,
+  },
 });
 
 const ADMIN_EMAILS = process.env.ADMIN_EMAILS?.split(",") || [];
