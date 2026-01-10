@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT),
+  secure: true,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
 const ADMIN_EMAILS = process.env.ADMIN_EMAILS?.split(",") || [];
-const FROM_EMAIL = process.env.FROM_EMAIL || "onboarding@resend.dev";
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,9 +27,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Email to client (confirmation)
-    await resend.emails.send({
-      from: `ZAIM DIGITAL <${FROM_EMAIL}>`,
-      to: [email],
+    const clientMailOptions = {
+      from: `"ZAIM DIGITAL" <${process.env.SMTP_USER}>`,
+      to: email,
       subject: "Confirmation de réception - ZAIM DIGITAL",
       html: `
         <!DOCTYPE html>
@@ -62,12 +69,12 @@ export async function POST(request: NextRequest) {
         </body>
         </html>
       `,
-    });
+    };
 
     // Email to admin (notification)
-    await resend.emails.send({
-      from: `ZAIM DIGITAL - Contact <${FROM_EMAIL}>`,
-      to: ADMIN_EMAILS,
+    const adminMailOptions = {
+      from: `"ZAIM DIGITAL - Nouveau Contact" <${process.env.SMTP_USER}>`,
+      to: ADMIN_EMAILS.join(", "),
       subject: `Nouvelle demande de contact - ${name}`,
       html: `
         <!DOCTYPE html>
@@ -135,7 +142,11 @@ export async function POST(request: NextRequest) {
         </body>
         </html>
       `,
-    });
+    };
+
+    // Send emails
+    await transporter.sendMail(clientMailOptions);
+    await transporter.sendMail(adminMailOptions);
 
     return NextResponse.json(
       { success: true, message: "Votre message a été envoyé avec succès" },
