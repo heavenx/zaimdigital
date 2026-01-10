@@ -1,14 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+const smtpPort = Number(process.env.SMTP_PORT) || 587;
+
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: true,
+  port: smtpPort,
+  secure: smtpPort === 465, // true for 465, false for 587
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  connectionTimeout: 10000, // 10 seconds
+  greetingTimeout: 10000,
 });
 
 const ADMIN_EMAILS = process.env.ADMIN_EMAILS?.split(",") || [];
@@ -154,8 +158,12 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Error sending email:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Une erreur est survenue lors de l'envoi du message" },
+      {
+        error: "Une erreur est survenue lors de l'envoi du message",
+        details: errorMessage
+      },
       { status: 500 }
     );
   }
