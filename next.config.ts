@@ -34,6 +34,38 @@ const nextConfig: NextConfig = {
           destination: "/blog",
           permanent: true,
         },
+        // Old page redirects
+        {
+          source: "/contact",
+          destination: "/contactez-nous",
+          permanent: true,
+        },
+        // Old blog posts that may have been deleted from WordPress
+        {
+          source: "/ameliorer-lefficacite-de-votre-entreprise-au-maroc-grace-a-la-gmao",
+          destination: "/blog",
+          permanent: true,
+        },
+        {
+          source: "/optimiser-la-productivite-de-votre-entreprise-au-maroc-avec-la-gmao-les-meilleures-pratiques-a-suivre",
+          destination: "/blog",
+          permanent: true,
+        },
+        {
+          source: "/les-tests-essentiels-effectues-par-les-laboratoires-btp-au-maroc",
+          destination: "/blog",
+          permanent: true,
+        },
+        {
+          source: "/optimiser-la-qualite-de-la-construction-telechargez-notre-pdf-sur-les-tests-en-laboratoire",
+          destination: "/blog",
+          permanent: true,
+        },
+        {
+          source: "/les-tests-de-laboratoire-essentiels-pour-la-construction-guide-pdf-complet",
+          destination: "/blog",
+          permanent: true,
+        },
         // Old English pages redirects
         {
           source: "/en/website-creation",
@@ -86,6 +118,38 @@ const nextConfig: NextConfig = {
         },
         {
           source: "/tag/:slug",
+          destination: "/blog",
+          permanent: true,
+        },
+        // Old page redirects
+        {
+          source: "/contact",
+          destination: "/contactez-nous",
+          permanent: true,
+        },
+        // Old blog posts that may have been deleted from WordPress
+        {
+          source: "/ameliorer-lefficacite-de-votre-entreprise-au-maroc-grace-a-la-gmao",
+          destination: "/blog",
+          permanent: true,
+        },
+        {
+          source: "/optimiser-la-productivite-de-votre-entreprise-au-maroc-avec-la-gmao-les-meilleures-pratiques-a-suivre",
+          destination: "/blog",
+          permanent: true,
+        },
+        {
+          source: "/les-tests-essentiels-effectues-par-les-laboratoires-btp-au-maroc",
+          destination: "/blog",
+          permanent: true,
+        },
+        {
+          source: "/optimiser-la-qualite-de-la-construction-telechargez-notre-pdf-sur-les-tests-en-laboratoire",
+          destination: "/blog",
+          permanent: true,
+        },
+        {
+          source: "/les-tests-de-laboratoire-essentiels-pour-la-construction-guide-pdf-complet",
           destination: "/blog",
           permanent: true,
         },
