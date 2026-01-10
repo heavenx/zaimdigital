@@ -124,7 +124,7 @@ export default async function Home() {
                 de votre entreprise
               </h2>
               <p className="text-lg leading-relaxed text-slate-600">
-                Notre expertise en développement informatique nous permet de disposer d'une vaste bibliothèque de développements et de créations d'applications. Chez ZAIM DIGITAL, nous aidons les entreprises à se démarquer en ligne en développant des stratégies sur mesure pour augmenter leur visibilité, améliorer leur performance et atteindre leurs objectifs commerciaux.
+                ZAIM DIGITAL accompagne les entreprises dans leur digitalisation en concevant des solutions logicielles performantes et adaptées aux métiers les plus exigeants. Spécialisés notamment dans les laboratoires de génie civil et de contrôle des matériaux, nous développons des outils fiables qui répondent aux enjeux opérationnels, réglementaires et de performance.
               </p>
             </div>
 
@@ -438,25 +438,21 @@ export default async function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 items-center">
             {[
-              { src: "/images/clients/LGTP.png", alt: "LGTP" },
-              { src: "/images/clients/Mobilize.png", alt: "Mobilize" },
-              { src: "/images/clients/logo-teamwill.png", alt: "Teamwill" },
-              { src: "/images/clients/Tachnopark.png", alt: "Technopark" },
-              { src: "/images/clients/GSS.png", alt: "GSS" },
-              { src: "/images/clients/FIM.png", alt: "FIM" },
-              { src: "/images/clients/LSTP-removebg-preview.png", alt: "LSTP" },
-              { src: "/images/clients/Maroc-Leasing.webp", alt: "Maroc Leasing" },
-              { src: "/images/clients/S2M.png", alt: "S2M" },
-              { src: "/images/clients/BM.png", alt: "BM" },
-              { src: "/images/clients/EasyDmat.webp", alt: "EasyDmat" },
-              { src: "/images/clients/Altiluz.webp", alt: "Altiluz" },
-              { src: "/images/clients/LMGC.png", alt: "LMGC" },
-              { src: "/images/clients/MS.png", alt: "MS" },
-            ].map((client, i) => (
-              <div
-                key={i}
-                className="group flex h-24 items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 grayscale hover:grayscale-0"
-              >
+              { src: "/images/clients/LMGC.png", alt: "LMGC", href: null },
+              { src: "/images/clients/LGTP.png", alt: "LGTP", href: null },
+              { src: "/images/clients/LSTP-removebg-preview.png", alt: "LSTP", href: null },
+              { src: "/images/clients/MS.png", alt: "LCMS", href: null },
+              { src: "/images/clients/Mobilize.png", alt: "Mobilize", href: "https://mobilize-fs.ma/" },
+              { src: "/images/clients/Maroc-Leasing.webp", alt: "Maroc Leasing", href: "https://www.marocleasing.ma/" },
+              { src: "/images/clients/Tachnopark.png", alt: "Technopark", href: "https://www.technopark.ma/" },
+              { src: "/images/clients/FIM.png", alt: "Groupe LFE", href: "https://www.group-lfe.com/" },
+              { src: "/images/clients/GSS.png", alt: "Global Sea Services", href: "https://globalseaservices.net/" },
+              { src: "/images/clients/S2M.png", alt: "S2M Equipment", href: "https://www.s2m-equipment.fr/" },
+              { src: "/images/clients/BM.png", alt: "BM Accounting", href: "https://www.bmaccounting.be/" },
+              { src: "/images/clients/Altiluz.webp", alt: "Altiluz Consulting", href: "https://www.altiluzconsulting.com/" },
+              { src: "/images/clients/EasyDmat.webp", alt: "EasyDmat", href: "https://www.easydmat.com/" },
+            ].map((client, i) => {
+              const content = (
                 <Image
                   src={client.src}
                   alt={client.alt}
@@ -464,8 +460,27 @@ export default async function Home() {
                   height={60}
                   className="max-h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                 />
-              </div>
-            ))}
+              );
+
+              return client.href ? (
+                <a
+                  key={i}
+                  href={client.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-24 items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 grayscale hover:grayscale-0"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div
+                  key={i}
+                  className="group flex h-24 items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 grayscale hover:grayscale-0"
+                >
+                  {content}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -696,10 +711,10 @@ export default async function Home() {
                     className="w-full gap-2 font-semibold"
                     asChild
                   >
-                    <Link href="/contactez-nous">
+                    <a href="https://calendly.com/karim-amguir/30min" target="_blank" rel="noopener noreferrer">
                       Prendre rendez-vous
                       <Calendar className="h-4 w-4" />
-                    </Link>
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
@@ -728,7 +743,7 @@ export default async function Home() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-slate-900 mb-1">Adresse</h4>
-                        <p className="text-slate-600 text-sm">Casablanca, Maroc</p>
+                        <p className="text-slate-600 text-sm">Siege Social : Bureau N°451 Technopark Casablanca</p>
                       </div>
                     </div>
                   </CardContent>

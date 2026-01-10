@@ -30,7 +30,8 @@ import {
   TestTube2,
   Layers,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  Settings
 } from "lucide-react";
 import { useState } from "react";
 
@@ -149,52 +150,76 @@ export default function LabcorpBTP() {
       icon: CreditCard,
       title: "Facturation et Recouvrement",
       description: "Automatisez votre facturation avec suivi des recouvrements intégré"
+    },
+    {
+      icon: Settings,
+      title: "Gestion de l'Étalonnage",
+      description: "Assurez le suivi et la planification des étalonnages de vos équipements de laboratoire, avec alertes automatiques, historique des contrôles et conformité aux exigences qualité et normatives"
+    },
+    {
+      icon: Award,
+      title: "Qualité ISO 17025",
+      description: "Assurez la conformité de votre laboratoire aux exigences de la norme ISO 17025 grâce à une traçabilité complète, un suivi qualité structuré et une gestion rigoureuse des processus et des contrôles"
     }
   ];
 
   const essais = [
     {
-      code: "AG Sol",
+      code: "AG",
       name: "Analyse Granulométrique",
-      description: "Méthode par tamisage à sec après lavage",
+      description: "Méthode par tamisage à sec ou après lavage",
       color: "bg-blue-500"
     },
     {
       code: "IP",
       name: "Indice de Plasticité",
-      description: "Détermination limite de liquidité et de plasticité",
+      description: "Détermination des limites de liquidité et de plasticité",
       color: "bg-green-500"
     },
     {
-      code: "PROCTOR",
-      name: "Essai Proctor",
+      code: "PR",
+      name: "Essai Proctor (Normal / Modifié)",
       description: "Détermination des références de compactage",
       color: "bg-purple-500"
     },
     {
       code: "VBS",
-      name: "Valeur au Bleu",
-      description: "Détermination de la valeur au bleu de méthylène",
+      name: "Valeur au Bleu de Méthylène",
+      description: "Évaluation de la propreté des sols et granulats",
       color: "bg-cyan-500"
     },
     {
       code: "ES",
       name: "Équivalent de Sable",
-      description: "Évaluation de l'équivalent de sable",
+      description: "Mesure de la propreté des granulats",
       color: "bg-orange-500"
     },
     {
       code: "MDE",
       name: "Micro Deval",
-      description: "Essai de résistance à l'usure Micro Deval",
+      description: "Essai de résistance à l'usure des granulats",
       color: "bg-pink-500"
     },
     {
-      code: "LOS",
+      code: "LA",
       name: "Los Angeles",
-      description: "Essai de résistance à la fragmentation Los Angeles",
+      description: "Essai de résistance à la fragmentation",
       color: "bg-indigo-500"
     }
+  ];
+
+  const autresEssais = [
+    "CBR – Indice portant Californien",
+    "Compression Béton – Cylindres et cubes",
+    "Traction par fendage",
+    "Flexion béton",
+    "Densité & Teneur en eau",
+    "Compactage in situ",
+    "Plaque de chargement",
+    "Adhérence liant-granulat",
+    "Essais Marshall (enrobés)",
+    "Essais de perméabilité",
+    "Essais de portance et stabilité"
   ];
 
   return (
@@ -371,29 +396,52 @@ export default function LabcorpBTP() {
               Méthodes d'Essais
             </Badge>
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              7 protocoles d'essais{" "}
-              <span className="text-primary">intégrés</span>
+              Plus de 240 essais sur{" "}
+              <span className="text-primary">12+ disciplines</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              La plateforme prend en charge les principales méthodes d'essais normalisées du secteur BTP
+            <p className="mx-auto max-w-3xl text-lg text-slate-600">
+              LABCORP BTP - LIMS intègre aujourd'hui 7 protocoles d'essais majeurs, couvrant plus de 240 essais répartis sur plus de 12 disciplines. La plateforme prend en charge les principales méthodes d'essais normalisées du secteur BTP.
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {essais.map((essai, index) => (
-              <Card key={index} className="group border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 overflow-hidden">
-                <CardContent className="p-6 space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className={`h-10 w-10 rounded-lg ${essai.color} flex items-center justify-center text-white text-sm font-bold`}>
-                      {essai.code.substring(0, 2)}
+          {/* Exemples d'essais principaux */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Exemples d'essais pris en charge</h3>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {essais.map((essai, index) => (
+                <Card key={index} className="group border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 overflow-hidden">
+                  <CardContent className="p-6 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className={`h-10 w-10 rounded-lg ${essai.color} flex items-center justify-center text-white text-sm font-bold`}>
+                        {essai.code.substring(0, 2)}
+                      </div>
+                      <span className="text-lg font-bold text-slate-900">{essai.code}</span>
                     </div>
-                    <span className="text-lg font-bold text-slate-900">{essai.code}</span>
-                  </div>
-                  <h3 className="text-base font-semibold text-slate-800">{essai.name}</h3>
-                  <p className="text-sm text-slate-600">{essai.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+                    <h3 className="text-base font-semibold text-slate-800">{essai.name}</h3>
+                    <p className="text-sm text-slate-600">{essai.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Autres essais couramment intégrés */}
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Autres essais couramment intégrés</h3>
+            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {autresEssais.map((essai, index) => (
+                <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 hover:bg-primary/5 transition-colors">
+                  <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <span className="text-slate-700">{essai}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/20">
+              <p className="text-slate-700 flex items-start gap-2">
+                <span className="text-xl">👉</span>
+                <span>La solution permet d'ajouter et paramétrer de nouveaux essais en toute autonomie, sans dépendance éditeur, quel que soit le niveau de complexité ou la norme appliquée.</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>

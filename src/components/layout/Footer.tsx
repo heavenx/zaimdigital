@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Facebook, Linkedin, Instagram, Youtube, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react"
+import { Facebook, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react"
 
 interface FooterLink {
   label: string
@@ -89,28 +89,16 @@ export function Footer() {
 
   const socialLinks = [
     {
-      name: "Facebook",
-      href: "https://facebook.com/zaimdigital",
-      icon: Facebook,
-      color: "hover:bg-[#1877F2]",
-    },
-    {
       name: "LinkedIn",
-      href: "https://linkedin.com/company/zaimdigital",
+      href: "https://www.linkedin.com/company/zaim-digital-lims-btp/",
       icon: Linkedin,
       color: "hover:bg-[#0A66C2]",
     },
     {
-      name: "Instagram",
-      href: "https://instagram.com/zaimdigital",
-      icon: Instagram,
-      color: "hover:bg-gradient-to-tr hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF]",
-    },
-    {
-      name: "YouTube",
-      href: "https://youtube.com/@zaimdigital",
-      icon: Youtube,
-      color: "hover:bg-[#FF0000]",
+      name: "Facebook",
+      href: "https://web.facebook.com/zaimdigital",
+      icon: Facebook,
+      color: "hover:bg-[#1877F2]",
     },
   ]
 
@@ -177,7 +165,7 @@ export function Footer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 uppercase tracking-wider">Adresse</p>
-                  <p className="text-white font-medium">Casablanca, Maroc</p>
+                  <p className="text-white font-medium">Siege Social : Bureau N°451 Technopark Casablanca</p>
                 </div>
               </div>
             </div>

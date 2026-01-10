@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,8 +14,6 @@ import {
   MapPin,
   Facebook,
   Linkedin,
-  Instagram,
-  Youtube,
   Sparkles,
   Loader2,
   CheckCircle2,
@@ -271,10 +268,10 @@ export default function ContactPage() {
                     className="w-full gap-2 font-semibold"
                     asChild
                   >
-                    <Link href="#calendly">
+                    <a href="https://calendly.com/karim-amguir/30min" target="_blank" rel="noopener noreferrer">
                       Fixer un rendez-vous sur Calendly
                       <Calendar className="h-4 w-4" />
-                    </Link>
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
@@ -344,37 +341,25 @@ export default function ContactPage() {
                     </p>
                   </div>
                   <div className="flex gap-4">
-                    <Link
-                      href="#facebook"
-                      className="group h-12 w-12 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
-                      aria-label="Facebook"
-                    >
-                      <Facebook className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform" />
-                    </Link>
-
-                    <Link
-                      href="#linkedin"
+                    <a
+                      href="https://www.linkedin.com/company/zaim-digital-lims-btp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group h-12 w-12 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
                       aria-label="LinkedIn"
                     >
                       <Linkedin className="h-5 w-5 text-blue-700 group-hover:scale-110 transition-transform" />
-                    </Link>
+                    </a>
 
-                    <Link
-                      href="#instagram"
+                    <a
+                      href="https://web.facebook.com/zaimdigital"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group h-12 w-12 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
-                      aria-label="Instagram"
+                      aria-label="Facebook"
                     >
-                      <Instagram className="h-5 w-5 text-pink-600 group-hover:scale-110 transition-transform" />
-                    </Link>
-
-                    <Link
-                      href="#youtube"
-                      className="group h-12 w-12 rounded-full bg-white shadow-md hover:shadow-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
-                      aria-label="YouTube"
-                    >
-                      <Youtube className="h-5 w-5 text-red-600 group-hover:scale-110 transition-transform" />
-                    </Link>
+                      <Facebook className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform" />
+                    </a>
                   </div>
                 </CardContent>
               </Card>
