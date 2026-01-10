@@ -12,6 +12,7 @@ import {
   formatDate,
   stripHtml,
   getReadingTime,
+  sanitizeContent,
 } from "@/lib/wordpress";
 
 interface Props {
@@ -171,7 +172,7 @@ export default async function BlogPost({ params }: Props) {
               prose-ul:my-6 prose-li:my-2
               prose-img:rounded-xl prose-img:shadow-lg
               prose-blockquote:border-l-primary prose-blockquote:bg-slate-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content.rendered) }}
           />
         </div>
       </section>
