@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Turnstile } from "@/components/ui/turnstile";
 import { Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 
 interface DemoRequestFormProps {
@@ -20,6 +21,7 @@ export function DemoRequestForm({ sourcePage, accentColor = "primary" }: DemoReq
     company: "",
     message: ""
   });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
@@ -27,6 +29,14 @@ export function DemoRequestForm({ sourcePage, accentColor = "primary" }: DemoReq
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
+
+  const handleTurnstileError = useCallback(() => {
+    setTurnstileToken(null);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,6 +52,7 @@ export function DemoRequestForm({ sourcePage, accentColor = "primary" }: DemoReq
         body: JSON.stringify({
           ...formData,
           sourcePage,
+          turnstileToken,
         }),
       });
 
@@ -51,6 +62,7 @@ export function DemoRequestForm({ sourcePage, accentColor = "primary" }: DemoReq
         setStatus("success");
         setStatusMessage(data.message || "Votre demande de démo a été envoyée avec succès !");
         setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+        setTurnstileToken(null);
       } else {
         setStatus("error");
         setStatusMessage(data.error || "Une erreur est survenue. Veuillez réessayer.");
@@ -185,11 +197,17 @@ export function DemoRequestForm({ sourcePage, accentColor = "primary" }: DemoReq
             />
           </div>
 
+          <Turnstile
+            onVerify={handleTurnstileVerify}
+            onError={handleTurnstileError}
+            onExpire={handleTurnstileError}
+          />
+
           <Button
             type="submit"
             size="lg"
             className={`w-full gap-2 ${colors.button} shadow-lg hover:shadow-xl transition-all duration-300`}
-            disabled={isLoading}
+            disabled={isLoading || !turnstileToken}
           >
             {isLoading ? (
               <>

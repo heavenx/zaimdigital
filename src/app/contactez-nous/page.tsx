@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Turnstile } from "@/components/ui/turnstile";
 import {
   Send,
   Calendar,
@@ -28,6 +29,7 @@ export default function ContactPage() {
     phone: "",
     message: ""
   });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
@@ -35,6 +37,14 @@ export default function ContactPage() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
+
+  const handleTurnstileError = useCallback(() => {
+    setTurnstileToken(null);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,6 +60,7 @@ export default function ContactPage() {
         body: JSON.stringify({
           ...formData,
           sourcePage: "Page Contact (/contactez-nous)",
+          turnstileToken,
         }),
       });
 
@@ -65,6 +76,7 @@ export default function ContactPage() {
           phone: "",
           message: ""
         });
+        setTurnstileToken(null);
       } else {
         setStatus("error");
         setStatusMessage(data.error || "Une erreur est survenue. Veuillez réessayer.");
@@ -225,11 +237,17 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  <Turnstile
+                    onVerify={handleTurnstileVerify}
+                    onError={handleTurnstileError}
+                    onExpire={handleTurnstileError}
+                  />
+
                   <Button
                     type="submit"
                     size="lg"
                     className="w-full gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
-                    disabled={isLoading}
+                    disabled={isLoading || !turnstileToken}
                   >
                     {isLoading ? (
                       <>
