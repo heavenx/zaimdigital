@@ -3,12 +3,13 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") || "";
-  const url = request.nextUrl.clone();
 
-  // Redirect non-www to www
+  // Redirect non-www to www (production only)
   if (host === "zaimdigital.com") {
+    const url = new URL(request.url);
     url.host = "www.zaimdigital.com";
-    return NextResponse.redirect(url, 301);
+    url.port = ""; // Remove port for production
+    return NextResponse.redirect(url.toString(), 301);
   }
 
   return NextResponse.next();
