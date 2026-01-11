@@ -150,16 +150,20 @@ export function getReadingTime(content: string): number {
 export function sanitizeContent(content: string): string {
   let sanitized = content;
 
+  // Fix local development URLs
+  sanitized = sanitized.replace(/https?:\/\/zaimdigital\.local\/?/g, "https://www.zaimdigital.com/");
+
+  // Fix missing slash after .com (e.g., zaimdigital.comnos_produits -> zaimdigital.com/nos_produits)
+  sanitized = sanitized.replace(/zaimdigital\.com([a-z])/g, "zaimdigital.com/$1");
+
   // Convert HTTP links to HTTPS for zaimdigital.com domain
   sanitized = sanitized.replace(/http:\/\/(www\.)?zaimdigital\.com/g, "https://www.zaimdigital.com");
 
   // Fix old labcorp subdomain links
-  sanitized = sanitized.replace(/http:\/\/labcorp\.zaimdigital\.com\/?/g, "https://www.zaimdigital.com/nos_produits/labcorp-laboratoire-btp");
-  sanitized = sanitized.replace(/https:\/\/labcorp\.zaimdigital\.com\/?/g, "https://www.zaimdigital.com/nos_produits/labcorp-laboratoire-btp");
+  sanitized = sanitized.replace(/https?:\/\/labcorp\.zaimdigital\.com\/?/g, "https://www.zaimdigital.com/nos_produits/labcorp-laboratoire-btp");
 
   // Fix old smoothfix subdomain links
-  sanitized = sanitized.replace(/http:\/\/smoothfix\.zaimdigital\.com\/?/g, "https://www.zaimdigital.com/nos_produits/smoothfix-gmao");
-  sanitized = sanitized.replace(/https:\/\/smoothfix\.zaimdigital\.com\/?/g, "https://www.zaimdigital.com/nos_produits/smoothfix-gmao");
+  sanitized = sanitized.replace(/https?:\/\/smoothfix\.zaimdigital\.com\/?/g, "https://www.zaimdigital.com/nos_produits/smoothfix-gmao");
 
   // Fix old contact page URL
   sanitized = sanitized.replace(/https:\/\/www\.zaimdigital\.com\/contact\/?/g, "https://www.zaimdigital.com/contactez-nous");
