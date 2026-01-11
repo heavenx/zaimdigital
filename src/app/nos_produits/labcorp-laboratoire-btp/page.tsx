@@ -1,12 +1,9 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { DemoRequestForm } from "@/components/forms/DemoRequestForm";
 import {
   ArrowRight,
   Sparkles,
@@ -21,7 +18,6 @@ import {
   BarChart3,
   CreditCard,
   CheckCircle2,
-  Send,
   Beaker,
   Monitor,
   Smartphone,
@@ -29,214 +25,194 @@ import {
   FlaskConical,
   TestTube2,
   Layers,
-  Loader2,
-  AlertCircle,
-  Settings
+  Settings,
+  Wrench,
+  Tractor
 } from "lucide-react";
-import { useState } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "LABCORP BTP - LIMS | Logiciel de Gestion Laboratoire BTP",
+  description: "LABCORP BTP-LIMS : logiciel de gestion pour laboratoires BTP et génie civil. Digitalisez vos essais, rapports et traçabilité. Conformité normes IMANOR.",
+  alternates: {
+    canonical: "https://www.zaimdigital.com/nos_produits/labcorp-laboratoire-btp",
+  },
+  openGraph: {
+    title: "LABCORP BTP - LIMS | Logiciel de Gestion Laboratoire BTP",
+    description: "Solution LIMS complète pour laboratoires BTP : essais, rapports, traçabilité et conformité aux normes.",
+    url: "https://www.zaimdigital.com/nos_produits/labcorp-laboratoire-btp",
+  },
+};
+
+const defis = [
+  {
+    icon: Award,
+    title: "Préparation aux Certifications",
+    description: "Facilitez la préparation de vos certifications avec des processus conformes aux exigences",
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    icon: Calculator,
+    title: "Calculs Conformes aux Normes",
+    description: "Simplifiez les calculs en conformité avec les normes légales et réglementaires",
+    color: "from-green-500 to-green-600"
+  },
+  {
+    icon: BookOpen,
+    title: "Veille Réglementaire Continue",
+    description: "Suivez en continu les normes et réglementations du secteur BTP",
+    color: "from-purple-500 to-purple-600"
+  },
+  {
+    icon: ShoppingCart,
+    title: "Gestion Commandes & Échantillons",
+    description: "Gérez efficacement le suivi des commandes et des échantillons",
+    color: "from-orange-500 to-orange-600"
+  },
+  {
+    icon: Users,
+    title: "Coordination des Services",
+    description: "Améliorez la coordination entre les différents services de votre laboratoire",
+    color: "from-pink-500 to-pink-600"
+  },
+  {
+    icon: Shield,
+    title: "Protection des Données",
+    description: "Atténuez les risques de perte et de vol de données sensibles",
+    color: "from-indigo-500 to-indigo-600"
+  }
+];
+
+const fonctionnalites = [
+  {
+    icon: ClipboardList,
+    title: "Suivi des Projets",
+    description: "Gérez tous vos projets BTP depuis une interface centralisée avec suivi en temps réel"
+  },
+  {
+    icon: FileText,
+    title: "Gestion Administrative",
+    description: "Simplifiez la gestion documentaire et administrative de votre laboratoire"
+  },
+  {
+    icon: FlaskConical,
+    title: "Module Feuilles d'Essais",
+    description: "Béton, Compactage, Identification - Calculs automatiques conformes aux normes"
+  },
+  {
+    icon: BarChart3,
+    title: "Rapports et Synthèses",
+    description: "Générez des rapports détaillés et visualisez vos performances en temps réel"
+  },
+  {
+    icon: CreditCard,
+    title: "Facturation et Recouvrement",
+    description: "Automatisez votre facturation avec suivi des recouvrements intégré"
+  },
+  {
+    icon: Settings,
+    title: "Gestion de l'Étalonnage",
+    description: "Assurez le suivi et la planification des étalonnages de vos équipements de laboratoire, avec alertes automatiques, historique des contrôles et conformité aux exigences qualité et normatives"
+  },
+  {
+    icon: Award,
+    title: "Qualité ISO 17025",
+    description: "Assurez la conformité de votre laboratoire aux exigences de la norme ISO 17025 grâce à une traçabilité complète, un suivi qualité structuré et une gestion rigoureuse des processus et des contrôles"
+  }
+];
+
+const essais = [
+  {
+    code: "AG",
+    name: "Analyse Granulométrique",
+    description: "Méthode par tamisage à sec ou après lavage",
+    color: "bg-blue-500"
+  },
+  {
+    code: "IP",
+    name: "Indice de Plasticité",
+    description: "Détermination des limites de liquidité et de plasticité",
+    color: "bg-green-500"
+  },
+  {
+    code: "PR",
+    name: "Essai Proctor (Normal / Modifié)",
+    description: "Détermination des références de compactage",
+    color: "bg-purple-500"
+  },
+  {
+    code: "VBS",
+    name: "Valeur au Bleu de Méthylène",
+    description: "Évaluation de la propreté des sols et granulats",
+    color: "bg-cyan-500"
+  },
+  {
+    code: "ES",
+    name: "Équivalent de Sable",
+    description: "Mesure de la propreté des granulats",
+    color: "bg-orange-500"
+  },
+  {
+    code: "MDE",
+    name: "Micro Deval",
+    description: "Essai de résistance à l'usure des granulats",
+    color: "bg-pink-500"
+  },
+  {
+    code: "LA",
+    name: "Los Angeles",
+    description: "Essai de résistance à la fragmentation",
+    color: "bg-indigo-500"
+  }
+];
+
+const autresEssais = [
+  "CBR – Indice portant Californien",
+  "Compression Béton – Cylindres et cubes",
+  "Traction par fendage",
+  "Flexion béton",
+  "Densité & Teneur en eau",
+  "Compactage in situ",
+  "Plaque de chargement",
+  "Adhérence liant-granulat",
+  "Essais Marshall (enrobés)",
+  "Essais de perméabilité",
+  "Essais de portance et stabilité"
+];
+
+const autresProduits = [
+  {
+    icon: Wrench,
+    title: "SMOOTHFIX GMAO",
+    description: "Logiciel de gestion de maintenance assistée par ordinateur",
+    href: "/nos_produits/smoothfix-gmao",
+    color: "from-orange-500 to-orange-600"
+  },
+  {
+    icon: Tractor,
+    title: "AGRONET",
+    description: "ERP agricole pour la gestion complète de votre exploitation",
+    href: "/agronet-gestion-ferme",
+    color: "from-green-500 to-green-600"
+  }
+];
 
 export default function LabcorpBTP() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    message: ""
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-  const [statusMessage, setStatusMessage] = useState("");
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setStatus("idle");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          sourcePage: "Page LABCORP BTP – LIMS (/nos_produits/labcorp-laboratoire-btp)",
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus("success");
-        setStatusMessage(data.message || "Votre demande de démo a été envoyée avec succès !");
-        setFormData({ name: "", email: "", phone: "", company: "", message: "" });
-      } else {
-        setStatus("error");
-        setStatusMessage(data.error || "Une erreur est survenue. Veuillez réessayer.");
-      }
-    } catch {
-      setStatus("error");
-      setStatusMessage("Une erreur est survenue. Veuillez réessayer.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const defis = [
-    {
-      icon: Award,
-      title: "Préparation aux Certifications",
-      description: "Facilitez la préparation de vos certifications avec des processus conformes aux exigences",
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      icon: Calculator,
-      title: "Calculs Conformes aux Normes",
-      description: "Simplifiez les calculs en conformité avec les normes légales et réglementaires",
-      color: "from-green-500 to-green-600"
-    },
-    {
-      icon: BookOpen,
-      title: "Veille Réglementaire Continue",
-      description: "Suivez en continu les normes et réglementations du secteur BTP",
-      color: "from-purple-500 to-purple-600"
-    },
-    {
-      icon: ShoppingCart,
-      title: "Gestion Commandes & Échantillons",
-      description: "Gérez efficacement le suivi des commandes et des échantillons",
-      color: "from-orange-500 to-orange-600"
-    },
-    {
-      icon: Users,
-      title: "Coordination des Services",
-      description: "Améliorez la coordination entre les différents services de votre laboratoire",
-      color: "from-pink-500 to-pink-600"
-    },
-    {
-      icon: Shield,
-      title: "Protection des Données",
-      description: "Atténuez les risques de perte et de vol de données sensibles",
-      color: "from-indigo-500 to-indigo-600"
-    }
-  ];
-
-  const fonctionnalites = [
-    {
-      icon: ClipboardList,
-      title: "Suivi des Projets",
-      description: "Gérez tous vos projets BTP depuis une interface centralisée avec suivi en temps réel"
-    },
-    {
-      icon: FileText,
-      title: "Gestion Administrative",
-      description: "Simplifiez la gestion documentaire et administrative de votre laboratoire"
-    },
-    {
-      icon: FlaskConical,
-      title: "Module Feuilles d'Essais",
-      description: "Béton, Compactage, Identification - Calculs automatiques conformes aux normes"
-    },
-    {
-      icon: BarChart3,
-      title: "Rapports et Synthèses",
-      description: "Générez des rapports détaillés et visualisez vos performances en temps réel"
-    },
-    {
-      icon: CreditCard,
-      title: "Facturation et Recouvrement",
-      description: "Automatisez votre facturation avec suivi des recouvrements intégré"
-    },
-    {
-      icon: Settings,
-      title: "Gestion de l'Étalonnage",
-      description: "Assurez le suivi et la planification des étalonnages de vos équipements de laboratoire, avec alertes automatiques, historique des contrôles et conformité aux exigences qualité et normatives"
-    },
-    {
-      icon: Award,
-      title: "Qualité ISO 17025",
-      description: "Assurez la conformité de votre laboratoire aux exigences de la norme ISO 17025 grâce à une traçabilité complète, un suivi qualité structuré et une gestion rigoureuse des processus et des contrôles"
-    }
-  ];
-
-  const essais = [
-    {
-      code: "AG",
-      name: "Analyse Granulométrique",
-      description: "Méthode par tamisage à sec ou après lavage",
-      color: "bg-blue-500"
-    },
-    {
-      code: "IP",
-      name: "Indice de Plasticité",
-      description: "Détermination des limites de liquidité et de plasticité",
-      color: "bg-green-500"
-    },
-    {
-      code: "PR",
-      name: "Essai Proctor (Normal / Modifié)",
-      description: "Détermination des références de compactage",
-      color: "bg-purple-500"
-    },
-    {
-      code: "VBS",
-      name: "Valeur au Bleu de Méthylène",
-      description: "Évaluation de la propreté des sols et granulats",
-      color: "bg-cyan-500"
-    },
-    {
-      code: "ES",
-      name: "Équivalent de Sable",
-      description: "Mesure de la propreté des granulats",
-      color: "bg-orange-500"
-    },
-    {
-      code: "MDE",
-      name: "Micro Deval",
-      description: "Essai de résistance à l'usure des granulats",
-      color: "bg-pink-500"
-    },
-    {
-      code: "LA",
-      name: "Los Angeles",
-      description: "Essai de résistance à la fragmentation",
-      color: "bg-indigo-500"
-    }
-  ];
-
-  const autresEssais = [
-    "CBR – Indice portant Californien",
-    "Compression Béton – Cylindres et cubes",
-    "Traction par fendage",
-    "Flexion béton",
-    "Densité & Teneur en eau",
-    "Compactage in situ",
-    "Plaque de chargement",
-    "Adhérence liant-granulat",
-    "Essais Marshall (enrobés)",
-    "Essais de perméabilité",
-    "Essais de portance et stabilité"
-  ];
-
   return (
     <div className="flex min-h-screen flex-col overflow-hidden">
       {/* Hero Section - Premium Design */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30 px-6 py-24 lg:px-8">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-1/2 -right-1/4 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-3xl animate-fade-in-slow" />
-          <div className="absolute -bottom-1/2 -left-1/4 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-blue-100/50 to-transparent blur-3xl animate-fade-in-slower" />
+          <div className="absolute -top-1/2 -right-1/4 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-3xl" />
+          <div className="absolute -bottom-1/2 -left-1/4 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-blue-100/50 to-transparent blur-3xl" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
         </div>
 
         <div className="mx-auto max-w-7xl w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-8 animate-fade-in-left">
+            <div className="space-y-8">
               {/* Premium Badge */}
               <Badge
                 variant="outline"
@@ -257,7 +233,7 @@ export default function LabcorpBTP() {
 
               {/* Hero Description */}
               <p className="text-lg leading-relaxed text-slate-600 sm:text-xl font-light">
-                LabCorp BTP – LIMS est un logiciel LIMS conçu pour les laboratoires BTP (contrôle externe, centrale à béton, carrières, postes d'enrobage). Il digitalise votre activité de la réception de l'échantillon jusqu'à l'émission du rapport d'essai, avec une traçabilité complète et un workflow de validation.
+                LabCorp BTP – LIMS est un logiciel LIMS conçu pour les laboratoires BTP (contrôle externe, centrale à béton, carrières, postes d&apos;enrobage). Il digitalise votre activité de la réception de l&apos;échantillon jusqu&apos;à l&apos;émission du rapport d&apos;essai, avec une traçabilité complète et un workflow de validation.
               </p>
 
               {/* CTA Buttons */}
@@ -286,7 +262,7 @@ export default function LabcorpBTP() {
             </div>
 
             {/* Right Image */}
-            <div className="relative animate-fade-in-right">
+            <div className="relative">
               <div className="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/labcorp-btp.webp"
@@ -344,7 +320,7 @@ export default function LabcorpBTP() {
                 </div>
                 <h3 className="text-2xl font-bold">Laboratoires producteurs</h3>
                 <p className="text-white/90 leading-relaxed">
-                  Centrales à béton, carrières, postes d'enrobage. Contrôles organisés par site avec gestion de la production intégrée.
+                  Centrales à béton, carrières, postes d&apos;enrobage. Contrôles organisés par site avec gestion de la production intégrée.
                 </p>
               </CardContent>
             </Card>
@@ -355,7 +331,7 @@ export default function LabcorpBTP() {
       {/* Défis Section */}
       <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16 space-y-4 animate-fade-in">
+          <div className="text-center mb-16 space-y-4">
             <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
               Problèmes Résolus
             </Badge>
@@ -364,7 +340,7 @@ export default function LabcorpBTP() {
               <span className="text-primary">résolvons</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              LabCorp BTP – LIMS répond aux enjeux majeurs des laboratoires d'analyse BTP
+              LabCorp BTP – LIMS répond aux enjeux majeurs des laboratoires d&apos;analyse BTP
             </p>
           </div>
 
@@ -390,23 +366,23 @@ export default function LabcorpBTP() {
       {/* Méthodes d'Essais Section */}
       <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16 space-y-4 animate-fade-in">
+          <div className="text-center mb-16 space-y-4">
             <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
               <Beaker className="h-3.5 w-3.5 mr-2" />
-              Méthodes d'Essais
+              Méthodes d&apos;Essais
             </Badge>
             <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               Plus de 240 essais sur{" "}
               <span className="text-primary">12+ disciplines</span>
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-slate-600">
-              LABCORP BTP - LIMS intègre aujourd'hui 7 protocoles d'essais majeurs, couvrant plus de 240 essais répartis sur plus de 12 disciplines. La plateforme prend en charge les principales méthodes d'essais normalisées du secteur BTP.
+              LABCORP BTP - LIMS intègre aujourd&apos;hui 7 protocoles d&apos;essais majeurs, couvrant plus de 240 essais répartis sur plus de 12 disciplines. La plateforme prend en charge les principales méthodes d&apos;essais normalisées du secteur BTP.
             </p>
           </div>
 
           {/* Exemples d'essais principaux */}
           <div className="mb-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Exemples d'essais pris en charge</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Exemples d&apos;essais pris en charge</h3>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {essais.map((essai, index) => (
                 <Card key={index} className="group border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:-translate-y-1 overflow-hidden">
@@ -439,7 +415,7 @@ export default function LabcorpBTP() {
             <div className="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/20">
               <p className="text-slate-700 flex items-start gap-2">
                 <span className="text-xl">👉</span>
-                <span>La solution permet d'ajouter et paramétrer de nouveaux essais en toute autonomie, sans dépendance éditeur, quel que soit le niveau de complexité ou la norme appliquée.</span>
+                <span>La solution permet d&apos;ajouter et paramétrer de nouveaux essais en toute autonomie, sans dépendance éditeur, quel que soit le niveau de complexité ou la norme appliquée.</span>
               </p>
             </div>
           </div>
@@ -449,7 +425,7 @@ export default function LabcorpBTP() {
       {/* Fonctionnalités Section */}
       <section id="fonctionnalites" className="relative px-6 py-32 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16 space-y-4 animate-fade-in">
+          <div className="text-center mb-16 space-y-4">
             <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
               Modules Principaux
             </Badge>
@@ -486,7 +462,7 @@ export default function LabcorpBTP() {
       <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8 animate-fade-in-left">
+            <div className="space-y-8">
               <div className="space-y-4">
                 <Badge variant="outline" className="border-primary/20 bg-primary/5 text-primary px-4 py-1.5">
                   <Database className="h-3.5 w-3.5 mr-2" />
@@ -520,7 +496,7 @@ export default function LabcorpBTP() {
               </ul>
             </div>
 
-            <div className="animate-fade-in-right">
+            <div>
               <Card className="border-none shadow-2xl bg-gradient-to-br from-primary/5 to-white overflow-hidden">
                 <CardContent className="p-8 space-y-6">
                   <div className="text-center space-y-4">
@@ -621,131 +597,74 @@ export default function LabcorpBTP() {
             </p>
           </div>
 
-          <Card className="border-none shadow-2xl bg-white">
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {status === "success" && (
-                  <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700">
-                    <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
-                    <p>{statusMessage}</p>
-                  </div>
-                )}
+          <DemoRequestForm
+            sourcePage="Page LABCORP BTP – LIMS (/nos_produits/labcorp-laboratoire-btp)"
+            accentColor="primary"
+          />
+        </div>
+      </section>
 
-                {status === "error" && (
-                  <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
-                    <AlertCircle className="h-5 w-5 flex-shrink-0" />
-                    <p>{statusMessage}</p>
-                  </div>
-                )}
+      {/* Autres Produits Section */}
+      <section className="relative px-6 py-24 lg:px-8 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-12 space-y-4">
+            <Badge variant="outline" className="border-slate-500/20 bg-slate-500/5 text-slate-600 px-4 py-1.5">
+              Découvrir aussi
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Nos autres solutions logicielles
+            </h2>
+          </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-slate-900">
-                      Nom & Prénom
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-primary transition-colors"
-                      placeholder="Votre nom complet"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
+          <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+            {autresProduits.map((produit, index) => {
+              const Icon = produit.icon;
+              return (
+                <Link key={index} href={produit.href}>
+                  <Card className="group h-full border-none shadow-lg hover:shadow-2xl transition-all duration-300 bg-white hover:-translate-y-2 cursor-pointer">
+                    <CardContent className="p-8 space-y-4">
+                      <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${produit.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="h-8 w-8" />
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors">{produit.title}</h3>
+                      <p className="text-slate-600">{produit.description}</p>
+                      <div className="flex items-center gap-2 text-primary font-medium">
+                        En savoir plus
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
+          </div>
 
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium text-slate-900">
-                      Entreprise
-                    </label>
-                    <Input
-                      id="company"
-                      name="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-primary transition-colors"
-                      placeholder="Nom de votre laboratoire"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-slate-900">
-                      E-mail
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-primary transition-colors"
-                      placeholder="votre@email.com"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium text-slate-900">
-                      Téléphone
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-primary transition-colors"
-                      placeholder="+212 6XX XXX XXX"
-                      disabled={isLoading}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-slate-900">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="min-h-32 border-slate-200 focus:border-primary transition-colors resize-none"
-                    placeholder="Parlez-nous de vos besoins..."
-                    required
-                    disabled={isLoading}
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      Envoi en cours...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4" />
-                      Demander une démonstration
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+          {/* Additional Links */}
+          <div className="mt-12 text-center space-y-4">
+            <p className="text-slate-600">Vous avez des besoins spécifiques ?</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button variant="outline" asChild>
+                <Link href="/nos_produits/developpement-specifique">
+                  Développement sur mesure
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/nos_produits">
+                  Tous nos produits
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/contactez-nous">
+                  Nous contacter
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/blog">
+                  Notre blog
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </div>

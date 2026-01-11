@@ -1,12 +1,9 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { DemoRequestForm } from "@/components/forms/DemoRequestForm";
 import {
   ArrowRight,
   Sparkles,
@@ -17,7 +14,6 @@ import {
   DollarSign,
   FileText,
   CheckCircle2,
-  Send,
   Wrench,
   Factory,
   Truck,
@@ -33,193 +29,173 @@ import {
   Server,
   FileCheck,
   Rocket,
-  Loader2,
-  AlertCircle
+  FlaskConical,
+  Tractor
 } from "lucide-react";
-import { useState } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "SMOOTHFIX GMAO - Logiciel de Gestion de Maintenance",
+  description: "SMOOTHFIX GMAO : solution SaaS de gestion de maintenance assistée par ordinateur. Optimisez vos interventions, réduisez les temps d'arrêt et augmentez la productivité.",
+  alternates: {
+    canonical: "https://www.zaimdigital.com/nos_produits/smoothfix-gmao",
+  },
+  openGraph: {
+    title: "SMOOTHFIX GMAO - Logiciel de Gestion de Maintenance",
+    description: "Solution SaaS GMAO pour optimiser vos opérations de maintenance industrielle.",
+    url: "https://www.zaimdigital.com/nos_produits/smoothfix-gmao",
+  },
+};
+
+const fonctionnalites = [
+  {
+    icon: Settings,
+    title: "Optimisation de la Maintenance",
+    description: "Planifiez, suivez et gérez efficacement vos activités de maintenance, réduisant les temps d'arrêt des équipements et maximisant leur durée de vie.",
+    color: "from-orange-500 to-orange-600"
+  },
+  {
+    icon: Users,
+    title: "Communication d'Équipe",
+    description: "Facilitez la communication et la collaboration entre les équipes de maintenance et les autres services de l'entreprise.",
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    icon: BarChart3,
+    title: "Suivi des Performances (KPIs)",
+    description: "Suivez les indicateurs de performance des équipements et des opérations de maintenance pour prendre des décisions éclairées.",
+    color: "from-green-500 to-green-600"
+  },
+  {
+    icon: Package,
+    title: "Gestion des Stocks",
+    description: "Gérez efficacement les stocks de pièces de rechange en suivant les niveaux d'inventaire et en planifiant les commandes.",
+    color: "from-purple-500 to-purple-600"
+  },
+  {
+    icon: DollarSign,
+    title: "Contrôle des Coûts",
+    description: "Suivez et analysez les coûts de maintenance pour contrôler vos budgets et éviter les dépenses inutiles.",
+    color: "from-pink-500 to-pink-600"
+  },
+  {
+    icon: FileText,
+    title: "Traçabilité & Rapports",
+    description: "Journaux d'actions complets et suite de rapports et KPIs pour une traçabilité totale des interventions.",
+    color: "from-indigo-500 to-indigo-600"
+  }
+];
+
+const industries = [
+  {
+    icon: Factory,
+    title: "Machines de Production",
+    description: "Machines de production et machines-outils"
+  },
+  {
+    icon: Truck,
+    title: "Manutention",
+    description: "Équipements de manutention (chariots élévateurs, palans)"
+  },
+  {
+    icon: Wind,
+    title: "Climatisation",
+    description: "Systèmes de contrôle climatique"
+  },
+  {
+    icon: Zap,
+    title: "Installations Électriques",
+    description: "Installations électriques et transformateurs"
+  },
+  {
+    icon: Droplets,
+    title: "Systèmes Hydrauliques",
+    description: "Systèmes hydrauliques et pneumatiques"
+  },
+  {
+    icon: Building2,
+    title: "Ascenseurs",
+    description: "Ascenseurs et escaliers mécaniques"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Équipements de Sécurité",
+    description: "Équipements et systèmes de sécurité"
+  }
+];
+
+const deploymentSteps = [
+  {
+    num: "1",
+    icon: UserCog,
+    title: "Administration Utilisateurs",
+    description: "Configuration de la base utilisateurs avec droits d'accès"
+  },
+  {
+    num: "2",
+    icon: Database,
+    title: "Base Produits",
+    description: "Configuration via import Excel ou création manuelle"
+  },
+  {
+    num: "3",
+    icon: Server,
+    title: "Configuration DNS",
+    description: "Configuration DNS pour transfert sécurisé des données"
+  },
+  {
+    num: "4",
+    icon: FileCheck,
+    title: "Personnalisation Documents",
+    description: "Personnalisation des rapports d'intervention"
+  },
+  {
+    num: "5",
+    icon: CheckCircle2,
+    title: "Tests & Validation",
+    description: "Tests de l'environnement et validation"
+  },
+  {
+    num: "6",
+    icon: Rocket,
+    title: "Mise en Production",
+    description: "Déploiement en production sous FQDN client"
+  }
+];
+
+const autresProduits = [
+  {
+    icon: FlaskConical,
+    title: "LABCORP BTP-LIMS",
+    description: "Logiciel de gestion pour laboratoires BTP et centrales à béton",
+    href: "/nos_produits/labcorp-laboratoire-btp",
+    color: "from-primary to-blue-600"
+  },
+  {
+    icon: Tractor,
+    title: "AGRONET",
+    description: "ERP agricole pour la gestion complète de votre exploitation",
+    href: "/agronet-gestion-ferme",
+    color: "from-green-500 to-green-600"
+  }
+];
 
 export default function SmoothfixGMAO() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    message: ""
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-  const [statusMessage, setStatusMessage] = useState("");
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setStatus("idle");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          sourcePage: "Page SMOOTHFIX GMAO (/nos_produits/smoothfix-gmao)",
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus("success");
-        setStatusMessage(data.message || "Votre demande de démo a été envoyée avec succès !");
-        setFormData({ name: "", email: "", phone: "", company: "", message: "" });
-      } else {
-        setStatus("error");
-        setStatusMessage(data.error || "Une erreur est survenue. Veuillez réessayer.");
-      }
-    } catch {
-      setStatus("error");
-      setStatusMessage("Une erreur est survenue. Veuillez réessayer.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const fonctionnalites = [
-    {
-      icon: Settings,
-      title: "Optimisation de la Maintenance",
-      description: "Planifiez, suivez et gérez efficacement vos activités de maintenance, réduisant les temps d'arrêt des équipements et maximisant leur durée de vie.",
-      color: "from-orange-500 to-orange-600"
-    },
-    {
-      icon: Users,
-      title: "Communication d'Équipe",
-      description: "Facilitez la communication et la collaboration entre les équipes de maintenance et les autres services de l'entreprise.",
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      icon: BarChart3,
-      title: "Suivi des Performances (KPIs)",
-      description: "Suivez les indicateurs de performance des équipements et des opérations de maintenance pour prendre des décisions éclairées.",
-      color: "from-green-500 to-green-600"
-    },
-    {
-      icon: Package,
-      title: "Gestion des Stocks",
-      description: "Gérez efficacement les stocks de pièces de rechange en suivant les niveaux d'inventaire et en planifiant les commandes.",
-      color: "from-purple-500 to-purple-600"
-    },
-    {
-      icon: DollarSign,
-      title: "Contrôle des Coûts",
-      description: "Suivez et analysez les coûts de maintenance pour contrôler vos budgets et éviter les dépenses inutiles.",
-      color: "from-pink-500 to-pink-600"
-    },
-    {
-      icon: FileText,
-      title: "Traçabilité & Rapports",
-      description: "Journaux d'actions complets et suite de rapports et KPIs pour une traçabilité totale des interventions.",
-      color: "from-indigo-500 to-indigo-600"
-    }
-  ];
-
-  const industries = [
-    {
-      icon: Factory,
-      title: "Machines de Production",
-      description: "Machines de production et machines-outils"
-    },
-    {
-      icon: Truck,
-      title: "Manutention",
-      description: "Équipements de manutention (chariots élévateurs, palans)"
-    },
-    {
-      icon: Wind,
-      title: "Climatisation",
-      description: "Systèmes de contrôle climatique"
-    },
-    {
-      icon: Zap,
-      title: "Installations Électriques",
-      description: "Installations électriques et transformateurs"
-    },
-    {
-      icon: Droplets,
-      title: "Systèmes Hydrauliques",
-      description: "Systèmes hydrauliques et pneumatiques"
-    },
-    {
-      icon: Building2,
-      title: "Ascenseurs",
-      description: "Ascenseurs et escaliers mécaniques"
-    },
-    {
-      icon: ShieldCheck,
-      title: "Équipements de Sécurité",
-      description: "Équipements et systèmes de sécurité"
-    }
-  ];
-
-  const deploymentSteps = [
-    {
-      num: "1",
-      icon: UserCog,
-      title: "Administration Utilisateurs",
-      description: "Configuration de la base utilisateurs avec droits d'accès"
-    },
-    {
-      num: "2",
-      icon: Database,
-      title: "Base Produits",
-      description: "Configuration via import Excel ou création manuelle"
-    },
-    {
-      num: "3",
-      icon: Server,
-      title: "Configuration DNS",
-      description: "Configuration DNS pour transfert sécurisé des données"
-    },
-    {
-      num: "4",
-      icon: FileCheck,
-      title: "Personnalisation Documents",
-      description: "Personnalisation des rapports d'intervention"
-    },
-    {
-      num: "5",
-      icon: CheckCircle2,
-      title: "Tests & Validation",
-      description: "Tests de l'environnement et validation"
-    },
-    {
-      num: "6",
-      icon: Rocket,
-      title: "Mise en Production",
-      description: "Déploiement en production sous FQDN client"
-    }
-  ];
-
   return (
     <div className="flex min-h-screen flex-col overflow-hidden">
       {/* Hero Section - Premium Design */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-orange-50/30 px-6 py-24 lg:px-8">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-1/2 -right-1/4 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-orange-500/10 to-transparent blur-3xl animate-fade-in-slow" />
-          <div className="absolute -bottom-1/2 -left-1/4 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-orange-100/50 to-transparent blur-3xl animate-fade-in-slower" />
+          <div className="absolute -top-1/2 -right-1/4 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-orange-500/10 to-transparent blur-3xl" />
+          <div className="absolute -bottom-1/2 -left-1/4 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-orange-100/50 to-transparent blur-3xl" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
         </div>
 
         <div className="mx-auto max-w-7xl w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-8 animate-fade-in-left">
+            <div className="space-y-8">
               {/* Premium Badge */}
               <Badge
                 variant="outline"
@@ -240,7 +216,7 @@ export default function SmoothfixGMAO() {
               {/* Hero Description */}
               <p className="text-lg leading-relaxed text-slate-600 sm:text-xl font-light">
                 Une solution SaaS accessible sur PC et mobile, simple à déployer et à utiliser,
-                qui vous aide à gérer vos interventions avec facilité. Réduisez les temps d'arrêt
+                qui vous aide à gérer vos interventions avec facilité. Réduisez les temps d&apos;arrêt
                 de production, augmentez la disponibilité des équipements et améliorez la satisfaction client.
               </p>
 
@@ -287,7 +263,7 @@ export default function SmoothfixGMAO() {
             </div>
 
             {/* Right Image */}
-            <div className="relative animate-fade-in-right">
+            <div className="relative">
               <div className="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/smoothfix-gmao.jpg"
@@ -316,7 +292,7 @@ export default function SmoothfixGMAO() {
       {/* Fonctionnalités Section */}
       <section id="fonctionnalites" className="relative px-6 py-32 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16 space-y-4 animate-fade-in">
+          <div className="text-center mb-16 space-y-4">
             <Badge variant="outline" className="border-orange-500/20 bg-orange-500/5 text-orange-600 px-4 py-1.5">
               Fonctionnalités Principales
             </Badge>
@@ -325,7 +301,7 @@ export default function SmoothfixGMAO() {
               <span className="text-orange-600">complète et intuitive</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              Notre équipe de développeurs a élaboré un logiciel simple d'utilisation, intuitif, 100% en ligne
+              Notre équipe de développeurs a élaboré un logiciel simple d&apos;utilisation, intuitif, 100% en ligne
             </p>
           </div>
 
@@ -351,7 +327,7 @@ export default function SmoothfixGMAO() {
       {/* Industries Section */}
       <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16 space-y-4 animate-fade-in">
+          <div className="text-center mb-16 space-y-4">
             <Badge variant="outline" className="border-orange-500/20 bg-orange-500/5 text-orange-600 px-4 py-1.5">
               Industries Applicables
             </Badge>
@@ -360,7 +336,7 @@ export default function SmoothfixGMAO() {
               <span className="text-orange-600">équipements</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-600">
-              SMOOTHFIX GMAO s'adapte à tous les types d'équipements industriels
+              SMOOTHFIX GMAO s&apos;adapte à tous les types d&apos;équipements industriels
             </p>
           </div>
 
@@ -386,7 +362,7 @@ export default function SmoothfixGMAO() {
       {/* Déploiement Section */}
       <section className="relative px-6 py-32 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16 space-y-4 animate-fade-in">
+          <div className="text-center mb-16 space-y-4">
             <Badge variant="outline" className="border-orange-500/20 bg-orange-500/5 text-orange-600 px-4 py-1.5">
               Processus de Déploiement
             </Badge>
@@ -427,7 +403,7 @@ export default function SmoothfixGMAO() {
       <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8 animate-fade-in-left">
+            <div className="space-y-8">
               <div className="space-y-4">
                 <Badge variant="outline" className="border-orange-500/20 bg-orange-500/5 text-orange-600 px-4 py-1.5">
                   Avantages
@@ -457,7 +433,7 @@ export default function SmoothfixGMAO() {
               </ul>
             </div>
 
-            <div className="animate-fade-in-right">
+            <div>
               <Card className="border-none shadow-2xl bg-gradient-to-br from-orange-50 to-white overflow-hidden">
                 <CardContent className="p-8 space-y-6">
                   <div className="text-center space-y-4">
@@ -473,7 +449,7 @@ export default function SmoothfixGMAO() {
                   <div className="grid grid-cols-2 gap-4 pt-4">
                     <div className="rounded-xl bg-white p-6 shadow-md text-center">
                       <div className="text-4xl font-bold text-orange-600">-30%</div>
-                      <div className="text-sm text-slate-600 mt-2">Temps d'arrêt</div>
+                      <div className="text-sm text-slate-600 mt-2">Temps d&apos;arrêt</div>
                     </div>
                     <div className="rounded-xl bg-white p-6 shadow-md text-center">
                       <div className="text-4xl font-bold text-orange-600">+40%</div>
@@ -525,131 +501,69 @@ export default function SmoothfixGMAO() {
             </p>
           </div>
 
-          <Card className="border-none shadow-2xl bg-white">
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {status === "success" && (
-                  <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700">
-                    <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
-                    <p>{statusMessage}</p>
-                  </div>
-                )}
+          <DemoRequestForm
+            sourcePage="Page SMOOTHFIX GMAO (/nos_produits/smoothfix-gmao)"
+            accentColor="orange"
+          />
+        </div>
+      </section>
 
-                {status === "error" && (
-                  <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
-                    <AlertCircle className="h-5 w-5 flex-shrink-0" />
-                    <p>{statusMessage}</p>
-                  </div>
-                )}
+      {/* Autres Produits Section */}
+      <section className="relative px-6 py-24 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-12 space-y-4">
+            <Badge variant="outline" className="border-slate-500/20 bg-slate-500/5 text-slate-600 px-4 py-1.5">
+              Découvrir aussi
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              Nos autres solutions logicielles
+            </h2>
+          </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-slate-900">
-                      Nom & Prénom
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-orange-500 transition-colors"
-                      placeholder="Votre nom complet"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
+          <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+            {autresProduits.map((produit, index) => {
+              const Icon = produit.icon;
+              return (
+                <Link key={index} href={produit.href}>
+                  <Card className="group h-full border-none shadow-lg hover:shadow-2xl transition-all duration-300 bg-white hover:-translate-y-2 cursor-pointer">
+                    <CardContent className="p-8 space-y-4">
+                      <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${produit.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="h-8 w-8" />
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors">{produit.title}</h3>
+                      <p className="text-slate-600">{produit.description}</p>
+                      <div className="flex items-center gap-2 text-primary font-medium">
+                        En savoir plus
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
+          </div>
 
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium text-slate-900">
-                      Entreprise
-                    </label>
-                    <Input
-                      id="company"
-                      name="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-orange-500 transition-colors"
-                      placeholder="Nom de votre entreprise"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-slate-900">
-                      E-mail
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-orange-500 transition-colors"
-                      placeholder="votre@email.com"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium text-slate-900">
-                      Téléphone
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="h-12 border-slate-200 focus:border-orange-500 transition-colors"
-                      placeholder="+212 6XX XXX XXX"
-                      disabled={isLoading}
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-slate-900">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="min-h-32 border-slate-200 focus:border-orange-500 transition-colors resize-none"
-                    placeholder="Parlez-nous de vos besoins..."
-                    required
-                    disabled={isLoading}
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full gap-2 bg-orange-600 hover:bg-orange-700 shadow-lg shadow-orange-600/25 hover:shadow-xl hover:shadow-orange-600/30 transition-all duration-300"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      Envoi en cours...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4 w-4" />
-                      Demander une démo gratuite
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+          {/* Additional Links */}
+          <div className="mt-12 text-center space-y-4">
+            <p className="text-slate-600">Vous avez des besoins spécifiques ?</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button variant="outline" asChild>
+                <Link href="/nos_produits/developpement-specifique">
+                  Développement sur mesure
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/nos_produits">
+                  Tous nos produits
+                </Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/contactez-nous">
+                  Nous contacter
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
