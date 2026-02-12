@@ -34,6 +34,11 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  // Old URL redirects (301)
+  if (pathname === "/agronet-gestion-ferme") {
+    return NextResponse.redirect(new URL("/nos_produits/agronet-gestion-ferme", request.url), 301);
+  }
+
   // Redirect non-www to www (production only)
   if (host === "zaimdigital.com") {
     const url = new URL(request.url);
