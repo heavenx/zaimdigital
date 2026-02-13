@@ -75,7 +75,7 @@ const productsFR: Product[] = [
   {
     icon: Settings,
     title: "Intégrateur Odoo",
-    description: "Partenaire Officiel Odoo ERP/CRM",
+    description: "Intégration Odoo ERP/CRM au Maroc",
     href: "/nos_produits/integrateur-odoo",
     badge: "ERP/CRM",
     badgeColor: "bg-purple-100 text-purple-700"

@@ -79,7 +79,7 @@ export default function NosProduits() {
     },
     {
       title: "Intégrateur Odoo",
-      description: "Partenaire Officiel Odoo au Maroc. Intégration, déploiement et personnalisation d'Odoo ERP/CRM pour PME et grandes entreprises. Expertise certifiée à Casablanca.",
+      description: "Expert intégrateur Odoo au Maroc. Intégration, déploiement et personnalisation d'Odoo ERP/CRM pour PME et grandes entreprises. Équipe expérimentée à Casablanca.",
       icon: Settings,
       href: "/nos_produits/integrateur-odoo",
       badge: "ERP/CRM",

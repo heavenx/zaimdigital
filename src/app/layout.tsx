@@ -39,7 +39,6 @@ export const metadata: Metadata = {
     "Odoo Maroc",
     "intégrateur Odoo",
     "Odoo ERP CRM Casablanca",
-    "partenaire officiel Odoo Maroc",
   ],
   authors: [{ name: "ZAIM DIGITAL", url: "https://www.zaimdigital.com" }],
   creator: "ZAIM DIGITAL",

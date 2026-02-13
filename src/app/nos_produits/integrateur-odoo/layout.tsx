@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Intégrateur Odoo Maroc | Partenaire Officiel ERP/CRM - ZAIM DIGITAL",
+  title: "Intégrateur Odoo Maroc | Expert ERP/CRM - ZAIM DIGITAL",
   description:
-    "Partenaire Officiel Odoo au Maroc. Intégration, déploiement et personnalisation d'Odoo ERP/CRM pour PME et grandes entreprises. Expertise certifiée à Casablanca.",
+    "Expert intégrateur Odoo au Maroc. Intégration, déploiement et personnalisation d'Odoo ERP/CRM pour PME et grandes entreprises. Équipe expérimentée à Casablanca.",
   keywords: [
     "intégrateur Odoo Maroc",
     "partenaire Odoo Maroc",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Odoo CRM Maroc",
     "déploiement Odoo Casablanca",
     "intégration Odoo",
-    "Odoo partenaire officiel",
+    "Odoo expert intégrateur",
     "ERP Maroc",
     "CRM Maroc",
     "Odoo PME Maroc",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     "Odoo facturation Maroc",
   ],
   openGraph: {
-    title: "Intégrateur Odoo Maroc | Partenaire Officiel - ZAIM DIGITAL",
+    title: "Intégrateur Odoo Maroc | Expert ERP/CRM - ZAIM DIGITAL",
     description:
-      "Partenaire Officiel Odoo au Maroc : intégration, personnalisation et formation ERP/CRM pour optimiser votre gestion d'entreprise.",
+      "Expert intégrateur Odoo au Maroc : intégration, personnalisation et formation ERP/CRM pour optimiser votre gestion d'entreprise.",
     url: "https://www.zaimdigital.com/nos_produits/integrateur-odoo",
   },
   alternates: {

@@ -59,8 +59,8 @@ export default function IntegrateurOdoo() {
   ];
 
   const advantages = [
-    "Partenaire Officiel Odoo au Maroc",
-    "Expertise certifiée sur toutes les versions d'Odoo",
+    "Expert Odoo reconnu au Maroc",
+    "Expertise approfondie sur toutes les versions d'Odoo",
     "Équipe locale basée à Casablanca",
     "Personnalisation complète selon vos besoins",
     "Conformité aux normes comptables marocaines",
@@ -82,7 +82,7 @@ export default function IntegrateurOdoo() {
         <div className="mx-auto max-w-7xl w-full text-center space-y-8 animate-fade-in">
           <Badge variant="outline" className="border-purple-500/20 bg-purple-500/5 text-purple-600 px-6 py-2">
             <Award className="h-3.5 w-3.5 mr-2" />
-            Partenaire Officiel Odoo
+            Expert Intégrateur Odoo
           </Badge>
 
           <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl max-w-5xl mx-auto">
@@ -93,12 +93,12 @@ export default function IntegrateurOdoo() {
           </h1>
 
           <p className="max-w-3xl mx-auto text-lg leading-relaxed text-slate-600 sm:text-xl font-light">
-            ZAIM DIGITAL, <strong>Partenaire Officiel Odoo au Maroc</strong>, vous accompagne dans l&apos;intégration et le déploiement d&apos;Odoo ERP/CRM. De la comptabilité à la gestion commerciale, en passant par les ressources humaines et la production, nous personnalisons Odoo pour répondre précisément aux besoins de votre entreprise.
+            ZAIM DIGITAL, <strong>votre expert intégrateur Odoo au Maroc</strong>, vous accompagne dans l&apos;intégration et le déploiement d&apos;Odoo ERP/CRM. De la comptabilité à la gestion commerciale, en passant par les ressources humaines et la production, nous personnalisons Odoo pour répondre précisément aux besoins de votre entreprise.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 pt-4">
             {[
-              "Partenaire Officiel Odoo",
+              "Expert Intégrateur Odoo",
               "Expertise locale à Casablanca",
               "Support dédié en français",
             ].map((item, idx) => (
@@ -126,28 +126,28 @@ export default function IntegrateurOdoo() {
         </div>
       </section>
 
-      {/* Partenaire Officiel Section */}
+      {/* Notre Expertise Odoo Section */}
       <section className="relative px-6 py-24 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <Badge variant="outline" className="border-purple-500/20 bg-purple-500/5 text-purple-600 px-4 py-1.5">
                 <Award className="h-3.5 w-3.5 mr-2" />
-                Certification Officielle
+                Notre Expertise
               </Badge>
               <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Pourquoi choisir un{" "}
-                <span className="text-purple-600">Partenaire Officiel Odoo</span> ?
+                Pourquoi choisir{" "}
+                <span className="text-purple-600">ZAIM DIGITAL pour Odoo</span> ?
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                En tant que Partenaire Officiel Odoo pour le Maroc, ZAIM DIGITAL bénéficie d&apos;un accès privilégié aux ressources Odoo, aux formations certifiées et au support technique direct de l&apos;éditeur. Cela nous permet de vous garantir une intégration aux standards les plus élevés et un accompagnement de qualité supérieure.
+                Forte de son expérience en intégration Odoo au Maroc, l&apos;équipe ZAIM DIGITAL maîtrise l&apos;ensemble des modules ERP/CRM et vous garantit un déploiement conforme aux meilleures pratiques. Notre connaissance approfondie de l&apos;écosystème Odoo nous permet de vous offrir un accompagnement de qualité supérieure.
               </p>
               <div className="space-y-3">
                 {[
-                  "Accès direct au support technique Odoo",
-                  "Consultants certifiés par Odoo S.A.",
+                  "Maîtrise complète de l'écosystème Odoo",
+                  "Consultants expérimentés en intégration ERP",
                   "Méthodologie de déploiement éprouvée",
-                  "Accès anticipé aux nouvelles fonctionnalités",
+                  "Veille continue sur les nouvelles fonctionnalités",
                 ].map((item, idx) => (
                   <div key={idx} className="flex gap-3 items-center">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-purple-600" />
@@ -162,9 +162,9 @@ export default function IntegrateurOdoo() {
                 <div className="mx-auto h-20 w-20 rounded-2xl bg-white/20 flex items-center justify-center">
                   <Award className="h-10 w-10" />
                 </div>
-                <h3 className="text-2xl font-bold">Partenaire Officiel Odoo</h3>
+                <h3 className="text-2xl font-bold">Expert Intégrateur Odoo</h3>
                 <p className="text-white/90">
-                  Intégrateur certifié pour le déploiement d&apos;Odoo ERP/CRM au Maroc
+                  Spécialiste du déploiement d&apos;Odoo ERP/CRM au Maroc
                 </p>
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <div className="rounded-xl bg-white/10 p-4 text-center">
@@ -402,11 +402,11 @@ export default function IntegrateurOdoo() {
               },
               {
                 question: "Quelle est la différence entre Odoo Community et Odoo Enterprise ?",
-                answer: "Odoo Community est la version open source et gratuite avec les fonctionnalités de base (CRM, ventes, inventaire, comptabilité). Odoo Enterprise ajoute des fonctionnalités avancées : studio (personnalisation sans code), signature électronique, hébergement cloud Odoo.sh, support officiel, application mobile et des modules premium comme la fabrication avancée (MRP), la qualité et la planification. En tant que Partenaire Officiel Odoo, nous vous conseillons la version la mieux adaptée à vos besoins.",
+                answer: "Odoo Community est la version open source et gratuite avec les fonctionnalités de base (CRM, ventes, inventaire, comptabilité). Odoo Enterprise ajoute des fonctionnalités avancées : studio (personnalisation sans code), signature électronique, hébergement cloud Odoo.sh, support officiel, application mobile et des modules premium comme la fabrication avancée (MRP), la qualité et la planification. Grâce à notre expertise approfondie d'Odoo, nous vous conseillons la version la mieux adaptée à vos besoins.",
               },
               {
-                question: "Pourquoi choisir un Partenaire Officiel Odoo plutôt qu'un intégrateur non certifié ?",
-                answer: "Un Partenaire Officiel Odoo comme ZAIM DIGITAL bénéficie d'un accès privilégié au support technique Odoo S.A., de formations certifiées régulières, d'un accès anticipé aux nouvelles versions et d'une méthodologie de déploiement éprouvée. Cela garantit une intégration conforme aux standards de l'éditeur, des mises à jour maîtrisées et un support de qualité supérieure pour votre entreprise.",
+                question: "Pourquoi choisir ZAIM DIGITAL comme intégrateur Odoo au Maroc ?",
+                answer: "ZAIM DIGITAL dispose d'une équipe expérimentée en intégration Odoo, d'une connaissance approfondie des processus métiers marocains et d'une méthodologie de déploiement éprouvée. Nous assurons une intégration conforme aux meilleures pratiques, des mises à jour maîtrisées et un support réactif en français et en arabe pour votre entreprise.",
               },
               {
                 question: "Odoo est-il adapté aux PME marocaines ?",
@@ -507,7 +507,7 @@ export default function IntegrateurOdoo() {
             Prêt à déployer Odoo dans votre entreprise ?
           </h2>
           <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Contactez votre Partenaire Officiel Odoo au Maroc pour une démonstration gratuite et un devis personnalisé
+            Contactez votre expert intégrateur Odoo au Maroc pour une démonstration gratuite et un devis personnalisé
           </p>
           <div className="flex flex-col gap-4 sm:flex-row justify-center">
             <Button size="lg" variant="secondary" className="gap-2 px-8 py-6" asChild>
