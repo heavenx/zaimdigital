@@ -67,6 +67,7 @@ export function Footer() {
     title: "Services",
     links: [
       { label: "Développement sur mesure", href: "/nos_produits/developpement-specifique/" },
+      { label: "Intégrateur Odoo", href: "/nos_produits/integrateur-odoo/" },
       { label: "Intégrateur Dolibarr", href: "/nos_produits/integrateur-dolibarr/" },
       { label: "Création site web", href: "/nos_produits/creation_site_web/" },
       { label: "Automatisation IA", href: "/nos_produits/developpement-specifique/" },

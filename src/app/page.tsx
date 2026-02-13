@@ -18,6 +18,7 @@ import {
   Clock
 } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { getPosts, formatDate, stripHtml, getReadingTime } from "@/lib/wordpress";
 
 export default async function Home() {
@@ -388,12 +389,20 @@ export default async function Home() {
                     Nous vous aidons à intégrer et personnaliser des CRM performants tels qu'Odoo et Dolibarr. Nos experts assurent un déploiement rapide et une configuration sur mesure pour améliorer votre gestion client et commerciale.
                   </p>
                 </div>
-                <Link href="/nos_produits/integrateur-dolibarr" className="pt-4 block">
-                  <span className="inline-flex items-center gap-2 text-green-600 font-semibold group-hover:gap-3 transition-all duration-300">
-                    Découvrir
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
-                </Link>
+                <div className="flex gap-4 pt-4">
+                  <Link href="/nos_produits/integrateur-odoo" className="block">
+                    <span className="inline-flex items-center gap-2 text-green-600 font-semibold hover:gap-3 transition-all duration-300">
+                      Odoo
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </Link>
+                  <Link href="/nos_produits/integrateur-dolibarr" className="block">
+                    <span className="inline-flex items-center gap-2 text-green-600 font-semibold hover:gap-3 transition-all duration-300">
+                      Dolibarr
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </Link>
+                </div>
               </CardContent>
             </Card>
 
@@ -448,7 +457,7 @@ export default async function Home() {
               { src: "/images/clients/FIM.png", alt: "Groupe LFE", href: "https://www.group-lfe.com/" },
               { src: "/images/clients/GSS.png", alt: "Global Sea Services", href: "https://globalseaservices.net/" },
               { src: "/images/clients/S2M.png", alt: "S2M Equipment", href: "https://www.instagram.com/bs2m2011/" },
-              { src: "/images/clients/BM.png", alt: "BM Accounting", href: "https://www.bmaccounting.be/" },
+              { src: "/images/clients/BS2M.png", alt: "BS2M Equipement Hotelerie", href: "https://www.instagram.com/bs2m2011/" },
               { src: "/images/clients/Altiluz.webp", alt: "Altiluz Consulting", href: "https://www.altiluzconsulting.com/" },
               { src: "/images/clients/EasyDmat.webp", alt: "EasyDmat", href: "https://www.easydmat.com/" },
             ].map((client, i) => {
@@ -503,226 +512,7 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* Témoignage 1 */}
-            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
-                    MK
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-900">Mr Mohamed El Kortbi</h4>
-                    <p className="text-slate-600">Gérant Associé</p>
-                    <p className="text-primary font-medium">Laboratoire des Matériaux et Génie Civil</p>
-                  </div>
-                </div>
-                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-primary pl-4">
-                  "Nous avons cru au logiciel LABCORP pour construire notre système d'information du laboratoire car nous avons fait confiance à une jeune équipe entrepreneuse qui est depuis notre première réunion à l'écoute de notre demande et a su transformer nos attentes en livrables facilitant nos processus conformément à notre système qualité accrédité NM ISO/CEI 17025. L'application est ergonomique, facile à déployer à tous les niveaux du laboratoire permettant un travail collaboratif sans accumuler les retards et dysfonctionnements."
-                </blockquote>
-                <Link
-                  href="https://www.linkedin.com/in/kortbi/"
-                  target="_blank"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
-                >
-                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  Voir sur LinkedIn
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Témoignage 2 */}
-            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
-                    OB
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-900">Mr Othman Bensator</h4>
-                    <p className="text-slate-600">Directeur Associé</p>
-                    <p className="text-primary font-medium">Laboratoire des Matériaux et Génie Civil</p>
-                  </div>
-                </div>
-                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-green-500 pl-4">
-                  "La solution LABCORP BTP – LIMS est une application dont les bénéfices sont inéluctablement favorables en terme de suivi, reporting, contrôle, financier. Nous sommes à ce jour satisfaits de l'objectif de la voir appliquée à toutes les disciplines. À ce jour, dans le béton, elle nous a résolu beaucoup de problèmes liés à la gestion prélèvement, de leurs réceptions au laboratoire, de la gestion du traitement et de l'envoi au client des rapports d'essais à temps."
-                </blockquote>
-                <Link
-                  href="https://www.linkedin.com/in/othman-bensator-a8364425/"
-                  target="_blank"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
-                >
-                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  Voir sur LinkedIn
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Témoignage 3 */}
-            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
-                    EE
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-900">Mr Essabiri EL MOSTAFA</h4>
-                    <p className="text-slate-600">Directeur Général</p>
-                    <p className="text-primary font-medium">Global Sea Services</p>
-                  </div>
-                </div>
-                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-orange-500 pl-4">
-                  &quot;En tant que transitaire maritime, l&apos;utilisation de l&apos;ERP de Zaim Digital nous a permis de digitaliser l&apos;ensemble de nos processus métiers en toute sécurité, notamment sur les calculs et la gestion des opérations. L&apos;équipe est très rigoureuse, professionnelle et techniquement pointue. Aujourd&apos;hui, je constate une réelle amélioration de la performance et de la qualité de nos services. Je suis très reconnaissant des avancées réalisées grâce à l&apos;engagement et au sérieux de Zaim Digital.&quot;
-                </blockquote>
-                <a
-                  href="https://globalseaservices.net/contact/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                  Voir le site
-                </a>
-              </CardContent>
-            </Card>
-
-            {/* Témoignage 4 */}
-            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
-                    HL
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-900">Mr Hamid Labriki</h4>
-                    <p className="text-slate-600">Directeur Général</p>
-                    <p className="text-primary font-medium">Kounhany</p>
-                  </div>
-                </div>
-                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-teal-500 pl-4">
-                  &quot;De notre côté, nous avons particulièrement apprécié le professionnalisme de Zaim Digital, la rapidité d&apos;exécution, ainsi que la qualité des échanges tout au long de la prestation. Vous avez toujours été à l&apos;écoute du besoin client, disponible et réactif, avec une réelle capacité à comprendre les enjeux métiers et à proposer des solutions adaptées. C&apos;est une collaboration fluide et efficace, que nous recommandons sans hésitation.&quot;
-                </blockquote>
-                <a
-                  href="https://www.kounhany.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                  Voir le site
-                </a>
-              </CardContent>
-            </Card>
-
-            {/* Témoignage 5 */}
-            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
-                    AZ
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-900">Mr A. ZITOUNI</h4>
-                    <p className="text-slate-600">Gérant du LGTP</p>
-                    <p className="text-primary font-medium">Laboratoire LGTP</p>
-                  </div>
-                </div>
-                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-indigo-500 pl-4">
-                  &quot;Le LGTP exprime sa pleine satisfaction quant au déploiement du projet LABCORP – LIMS, réalisé en étroite collaboration avec ZAIM DIGITAL. Cette coopération s&apos;est distinguée par un haut niveau de professionnalisme, une compréhension fine des exigences métier du laboratoire et une capacité d&apos;adaptation aux spécificités opérationnelles du LGTP. La mise en œuvre de cette solution constitue une avancée significative dans la digitalisation de nos processus, le renforcement de la traçabilité et l&apos;amélioration continue de la performance et de la qualité de nos services.&quot;
-                </blockquote>
-                <Link
-                  href="https://www.linkedin.com/in/abdelilah-zitouni-7711b71b"
-                  target="_blank"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
-                >
-                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  Voir sur LinkedIn
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Témoignage 6 */}
-            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
-                    AM
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-900">Adrien Maurel</h4>
-                    <p className="text-slate-600">Chairman of M&Son Group</p>
-                    <p className="text-primary font-medium">M&Son Group</p>
-                  </div>
-                </div>
-                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-rose-500 pl-4">
-                  &quot;Outre ses compétences professionnelles avérées, Karim se distingue par des qualités managériales remarquables. Sa constance, entendue comme une posture stable, cohérente et linéaire dans le temps, se conjugue à une loyauté à toute épreuve, fondée sur une fiabilité et une confiance durables. Il excelle tant sur le plan relationnel que technique et fait preuve d&apos;un engagement et d&apos;une motivation exemplaires dans la conduite des équipes.&quot;
-                </blockquote>
-                <Link
-                  href="https://www.linkedin.com/in/adrien-maurel"
-                  target="_blank"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
-                >
-                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  Voir sur LinkedIn
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Témoignage 7 */}
-            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-pink-500 to-fuchsia-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
-                    CJ
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-900">Claudia Jimenez</h4>
-                    <p className="text-slate-600">Fondatrice - CEO</p>
-                    <p className="text-primary font-medium">Altiluz Consulting & SkillUp Lab Académie</p>
-                  </div>
-                </div>
-                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-pink-500 pl-4">
-                  &quot;Zaim Digital, une équipe et un travail de qualité. Ce qui est promis est livré, avec qualité, rigueur et un suivi attentif. Une équipe à l&apos;écoute, qui cherche à comprendre avant de proposer. Je recommande sans hésitation.&quot;
-                </blockquote>
-                <Link
-                  href="https://www.linkedin.com/in/claudia-jimenez-74444820/"
-                  target="_blank"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
-                >
-                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  Voir sur LinkedIn
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Témoignage 8 */}
-            <Card className="border-none shadow-xl bg-white p-0 overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
-                    CL
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-slate-900">Cyrille Lefevre</h4>
-                    <p className="text-slate-600">Directeur</p>
-                    <p className="text-primary font-medium">Group LFE</p>
-                  </div>
-                </div>
-                <blockquote className="text-slate-600 leading-relaxed italic border-l-4 border-sky-500 pl-4">
-                  &quot;SmoothFix GMAO est devenu un outil essentiel à notre activité quotidienne, tant pour nos équipes techniques que pour le personnel administratif, ainsi que pour nos clients. Grâce à cette solution, nous avons pu centraliser l&apos;ensemble de nos interventions et informations liées à notre activité de maintenance. Le récent développement de la saisie automatique des commandes commence également à prendre une place importante dans nos processus. En définitive, l&apos;outil conçu par l&apos;équipe ZAIM DIGITAL en étroite collaboration avec nous est désormais indissociable de notre fonctionnement au quotidien.&quot;
-                </blockquote>
-                <a
-                  href="https://www.group-lfe.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                  Voir le site
-                </a>
-              </CardContent>
-            </Card>
-          </div>
+          <TestimonialCarousel />
         </div>
       </section>
 

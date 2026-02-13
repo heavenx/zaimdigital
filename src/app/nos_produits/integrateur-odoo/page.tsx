@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { DemoRequestForm } from "@/components/forms/DemoRequestForm";
 import {
   ArrowRight,
   Sparkles,
@@ -23,6 +24,10 @@ import {
   Truck,
   Factory,
   Award,
+  ClipboardList,
+  Cog,
+  DatabaseZap,
+  ChevronDown,
 } from "lucide-react";
 
 export default function IntegrateurOdoo() {
@@ -306,8 +311,169 @@ export default function IntegrateurOdoo() {
         </div>
       </section>
 
+      {/* Processus d'intégration Section */}
+      <section className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16 space-y-4">
+            <Badge variant="outline" className="border-purple-500/20 bg-purple-500/5 text-purple-600 px-4 py-1.5">
+              Notre Méthodologie
+            </Badge>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              Comment se déroule l&apos;intégration <span className="text-purple-600">Odoo</span> ?
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              Un processus structuré en 4 étapes pour garantir le succès de votre projet ERP Odoo au Maroc
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                step: "01",
+                icon: ClipboardList,
+                title: "Audit & Analyse des besoins",
+                description: "Nous analysons vos processus métiers existants, identifions vos besoins fonctionnels et définissons le périmètre du projet d'intégration Odoo adapté à votre entreprise au Maroc.",
+              },
+              {
+                step: "02",
+                icon: Cog,
+                title: "Configuration & Personnalisation",
+                description: "Paramétrage des modules Odoo (comptabilité, CRM, stocks, RH), développement de modules sur mesure et personnalisation de l'interface selon vos spécificités métier.",
+              },
+              {
+                step: "03",
+                icon: DatabaseZap,
+                title: "Migration & Déploiement",
+                description: "Migration sécurisée de vos données depuis votre ancien système, tests approfondis et mise en production de votre instance Odoo cloud ou on-premise.",
+              },
+              {
+                step: "04",
+                icon: GraduationCap,
+                title: "Formation & Support continu",
+                description: "Formation complète de vos équipes en français, documentation personnalisée et support technique réactif pour assurer l'adoption et la pérennité de votre ERP Odoo.",
+              },
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className="relative group">
+                  <div className="absolute -top-4 -left-2 text-6xl font-black text-purple-100 group-hover:text-purple-200 transition-colors duration-300">
+                    {item.step}
+                  </div>
+                  <Card className="relative border-none shadow-lg hover:shadow-2xl transition-all duration-500 bg-white hover:-translate-y-2 h-full">
+                    <CardContent className="p-8 space-y-4 pt-10">
+                      <div className="h-14 w-14 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
+                      <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ SEO Section */}
+      <section className="relative px-6 py-32 lg:px-8 bg-white">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center mb-16 space-y-4">
+            <Badge variant="outline" className="border-purple-500/20 bg-purple-500/5 text-purple-600 px-4 py-1.5">
+              FAQ
+            </Badge>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              Questions fréquentes sur <span className="text-purple-600">Odoo</span>
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              Tout ce que vous devez savoir sur l&apos;intégration d&apos;Odoo ERP/CRM au Maroc
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                question: "Qu'est-ce qu'Odoo ERP et pourquoi le choisir pour mon entreprise au Maroc ?",
+                answer: "Odoo est un progiciel de gestion intégré (ERP) open source proposant plus de 80 applications professionnelles : CRM, comptabilité, gestion des stocks, ressources humaines, e-commerce, fabrication et bien plus. C'est l'ERP le plus déployé dans le monde avec plus de 12 millions d'utilisateurs. Au Maroc, Odoo est particulièrement adapté car il prend en charge la comptabilité conforme aux normes marocaines, la facturation en MAD et la gestion multi-langues (français, arabe).",
+              },
+              {
+                question: "Combien coûte l'intégration d'Odoo au Maroc ?",
+                answer: "Le coût d'intégration d'Odoo varie selon la taille de votre entreprise, le nombre de modules requis et le niveau de personnalisation. Odoo Community est gratuit (open source), tandis qu'Odoo Enterprise est proposé sous licence par utilisateur. Les coûts d'intégration incluent le paramétrage, la personnalisation, la migration des données et la formation. Contactez-nous pour obtenir un devis personnalisé adapté à votre budget.",
+              },
+              {
+                question: "Quelle est la différence entre Odoo Community et Odoo Enterprise ?",
+                answer: "Odoo Community est la version open source et gratuite avec les fonctionnalités de base (CRM, ventes, inventaire, comptabilité). Odoo Enterprise ajoute des fonctionnalités avancées : studio (personnalisation sans code), signature électronique, hébergement cloud Odoo.sh, support officiel, application mobile et des modules premium comme la fabrication avancée (MRP), la qualité et la planification. En tant que Partenaire Officiel Odoo, nous vous conseillons la version la mieux adaptée à vos besoins.",
+              },
+              {
+                question: "Pourquoi choisir un Partenaire Officiel Odoo plutôt qu'un intégrateur non certifié ?",
+                answer: "Un Partenaire Officiel Odoo comme ZAIM DIGITAL bénéficie d'un accès privilégié au support technique Odoo S.A., de formations certifiées régulières, d'un accès anticipé aux nouvelles versions et d'une méthodologie de déploiement éprouvée. Cela garantit une intégration conforme aux standards de l'éditeur, des mises à jour maîtrisées et un support de qualité supérieure pour votre entreprise.",
+              },
+              {
+                question: "Odoo est-il adapté aux PME marocaines ?",
+                answer: "Odoo est parfaitement adapté aux PME marocaines. Sa modularité permet de démarrer avec les modules essentiels (comptabilité, facturation, CRM) et d'ajouter progressivement d'autres fonctionnalités au fur et à mesure de la croissance de l'entreprise. La conformité aux normes comptables marocaines, le support en français et les coûts maîtrisés en font un choix idéal pour les PME au Maroc.",
+              },
+              {
+                question: "Combien de temps prend le déploiement d'Odoo ?",
+                answer: "La durée de déploiement d'Odoo dépend de la complexité du projet. Pour une PME avec des besoins standards (comptabilité, CRM, stocks), le déploiement prend généralement entre 4 et 8 semaines. Pour des projets plus complexes impliquant des développements sur mesure, la migration de données volumineuses ou de multiples sites, comptez entre 2 et 6 mois. Notre méthodologie agile permet des livraisons progressives pour que vous puissiez utiliser Odoo rapidement.",
+              },
+            ].map((faq, idx) => (
+              <details key={idx} className="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+                <summary className="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold text-slate-900 list-none">
+                  <span className="pr-4">{faq.question}</span>
+                  <ChevronDown className="h-5 w-5 shrink-0 text-purple-600 transition-transform duration-300 group-open:rotate-180" />
+                </summary>
+                <div className="px-6 pb-6 text-slate-600 leading-relaxed">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Request Form Section */}
+      <section id="demo" className="relative px-6 py-32 lg:px-8 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-gradient-to-br from-purple-500/10 to-transparent blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-gradient-to-br from-violet-500/10 to-transparent blur-3xl" />
+
+        <div className="mx-auto max-w-6xl relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <Badge variant="outline" className="border-purple-500/20 bg-purple-500/5 text-purple-600 px-4 py-1.5">
+                  <Award className="h-3.5 w-3.5 mr-2" />
+                  Démonstration Gratuite
+                </Badge>
+                <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                  Demandez votre <span className="text-purple-600">démo Odoo</span> gratuite
+                </h2>
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  Découvrez comment Odoo ERP/CRM peut transformer la gestion de votre entreprise au Maroc. Notre équipe certifiée vous présente les modules adaptés à votre activité lors d&apos;une démonstration personnalisée et sans engagement.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  "Démonstration personnalisée selon votre secteur",
+                  "Estimation budgétaire transparente",
+                  "Conseils d'experts certifiés Odoo",
+                  "Sans engagement ni obligation",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-3 items-center">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-purple-600" />
+                    <span className="text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <DemoRequestForm sourcePage="Intégrateur Odoo (/nos_produits/integrateur-odoo)" accentColor="primary" />
+          </div>
+        </div>
+      </section>
+
       {/* Internal Links Section */}
-      <section className="relative px-6 py-16 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+      <section className="relative px-6 py-16 lg:px-8 bg-white">
         <div className="mx-auto max-w-7xl">
           <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">
             Découvrez nos autres solutions
@@ -345,7 +511,7 @@ export default function IntegrateurOdoo() {
           </p>
           <div className="flex flex-col gap-4 sm:flex-row justify-center">
             <Button size="lg" variant="secondary" className="gap-2 px-8 py-6" asChild>
-              <Link href="/contactez-nous">
+              <Link href="#demo">
                 Demander une démonstration gratuite
                 <ArrowRight className="h-5 w-5" />
               </Link>

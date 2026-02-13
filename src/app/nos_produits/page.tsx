@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Code, Globe, Database, Sparkles, LucideIcon } from "lucide-react";
+import { ArrowRight, Code, Globe, Database, Settings, Sparkles, LucideIcon } from "lucide-react";
 
 import type { Metadata } from "next";
 
@@ -78,12 +78,21 @@ export default function NosProduits() {
       gradient: "from-green-500 to-emerald-600",
     },
     {
+      title: "Intégrateur Odoo",
+      description: "Partenaire Officiel Odoo au Maroc. Intégration, déploiement et personnalisation d'Odoo ERP/CRM pour PME et grandes entreprises. Expertise certifiée à Casablanca.",
+      icon: Settings,
+      href: "/nos_produits/integrateur-odoo",
+      badge: "ERP/CRM",
+      badgeColor: "bg-purple-100 text-purple-700 hover:bg-purple-200",
+      gradient: "from-purple-500 to-violet-600",
+    },
+    {
       title: "Développement Spécifique",
       description: "Solutions logicielles sur mesure développées selon vos besoins spécifiques. De l'analyse à la mise en production, nous créons des applications performantes et évolutives.",
       icon: Code,
       href: "/nos_produits/developpement-specifique",
       badge: "Sur Mesure",
-      badgeColor: "bg-purple-100 text-purple-700 hover:bg-purple-200",
+      badgeColor: "bg-indigo-100 text-indigo-700 hover:bg-indigo-200",
       gradient: "from-indigo-500 to-purple-600",
     },
   ];

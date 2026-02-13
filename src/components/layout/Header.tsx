@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Menu, ArrowRight, ChevronDown, Beaker, Wrench, Sprout, Globe, Database, Code } from "lucide-react"
+import { Menu, ArrowRight, ChevronDown, Beaker, Wrench, Sprout, Globe, Database, Code, Settings } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -73,12 +73,20 @@ const productsFR: Product[] = [
     badgeColor: "bg-emerald-100 text-emerald-700"
   },
   {
+    icon: Settings,
+    title: "Intégrateur Odoo",
+    description: "Partenaire Officiel Odoo ERP/CRM",
+    href: "/nos_produits/integrateur-odoo",
+    badge: "ERP/CRM",
+    badgeColor: "bg-purple-100 text-purple-700"
+  },
+  {
     icon: Code,
     title: "Développement Spécifique",
     description: "Solutions sur mesure",
     href: "/nos_produits/developpement-specifique",
     badge: "Custom",
-    badgeColor: "bg-purple-100 text-purple-700"
+    badgeColor: "bg-violet-100 text-violet-700"
   }
 ]
 
