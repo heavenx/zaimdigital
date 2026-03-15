@@ -464,7 +464,7 @@ export default function Home() {
               { src: "/images/clients/FIM.png", alt: "FIM" },
               { src: "/images/clients/LSTP-removebg-preview.png", alt: "LSTP" },
               { src: "/images/clients/Maroc-Leasing.webp", alt: "Maroc Leasing" },
-              { src: "/images/clients/S2M.png", alt: "S2M" },
+              { src: "/images/clients/Trecq.jpg", alt: "Trecq" },
               { src: "/images/clients/BM.png", alt: "BM" },
               { src: "/images/clients/EasyDmat.webp", alt: "EasyDmat" },
               { src: "/images/clients/Altiluz.webp", alt: "Altiluz" },

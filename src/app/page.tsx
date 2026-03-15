@@ -456,7 +456,7 @@ export default async function Home() {
               { src: "/images/clients/Tachnopark.png", alt: "Technopark", href: "https://www.technopark.ma/" },
               { src: "/images/clients/FIM.png", alt: "Groupe LFE", href: "https://www.group-lfe.com/" },
               { src: "/images/clients/GSS.png", alt: "Global Sea Services", href: "https://globalseaservices.net/" },
-              { src: "/images/clients/S2M.png", alt: "S2M Equipment", href: "https://www.instagram.com/bs2m2011/" },
+              { src: "/images/clients/Trecq.jpg", alt: "Trecq", href: "https://trecq.ma/" },
               { src: "/images/clients/BS2M.png", alt: "BS2M Equipement Hotelerie", href: "https://www.instagram.com/bs2m2011/" },
               { src: "/images/clients/Altiluz.webp", alt: "Altiluz Consulting", href: "https://www.altiluzconsulting.com/" },
               { src: "/images/clients/EasyDmat.webp", alt: "EasyDmat", href: "https://www.easydmat.com/" },

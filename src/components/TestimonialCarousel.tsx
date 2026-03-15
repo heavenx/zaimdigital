@@ -67,6 +67,21 @@ const testimonials: Testimonial[] = [
     },
   },
   {
+    initials: "MB",
+    name: "Mme Meriem Benhsine",
+    role: "Gérant Associé",
+    company: "Brand Manager – Dacia",
+    quote:
+      "Je suis extrêmement satisfaite de ma collaboration avec Zaim Digital. C\u2019est une start-up qui se démarque véritablement par sa maîtrise remarquable des sujets, son professionnalisme et son sens du service. Leur accompagnement a été à la fois riche en expertise, en conseils pertinents et en compétences techniques et client. Travailler avec une équipe aussi impliquée, réactive et compétente est un réel plaisir. Je recommande vivement Zaim Digital à toute entreprise souhaitant être accompagnée par un partenaire sérieux, innovant et humain.",
+    gradient: "from-purple-500 to-indigo-600",
+    borderColor: "border-purple-500",
+    link: {
+      type: "linkedin",
+      href: "https://www.linkedin.com/in/meriem-benhsine/",
+      label: "Voir sur LinkedIn",
+    },
+  },
+  {
     initials: "CL",
     name: "Cyrille Lefevre",
     role: "Directeur",
